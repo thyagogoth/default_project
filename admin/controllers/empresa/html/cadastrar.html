@@ -1,0 +1,129 @@
+<!-- %header% -->
+<meta id="dir_imgs" content="{%MODULE%}" />
+<meta id="orak_copy" content="true" />
+<!-- %body% -->
+
+<main id="js-page-content" role="main" class="page-content">
+    {%breadcrumb%}
+
+    <div class="subheader">
+        <h1 class="subheader-title">
+            <i class='subheader-icon fal fa-edit'></i> Cadastrando: <span class='fw-300'>Conteúdo institucional</span>
+            <small>
+                Cadastro de conteúdo
+            </small>
+        </h1>
+    </div>
+    <!-- %alert-box% -->
+    <div class="alert alert-{%type%}">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fal fa-times-circle"></i></span>
+        </button>
+        <div class="d-flex flex-start w-100">
+            <div class="mr-2 hidden-md-down">
+                <span class="icon-stack icon-stack-lg">
+                    <i class="base base-2 icon-stack-3x opacity-100 color-primary-500"></i>
+                    <i class="base base-2 icon-stack-2x opacity-100 color-primary-300"></i>
+                    <i class="fal fa-info icon-stack-1x opacity-100 color-white"></i>
+                </span>
+            </div>
+            <div class="d-flex flex-fill">
+                <div class="flex-fill">
+                    <span class="h5">{%title%}</span>
+                    {%msg-sistema%}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- %end-alert-box% -->
+
+    <div id="panel-2" class="panel">
+        <div class="panel-hdr">
+            <h2>
+                Formulário <span class="fw-300"><i>de cadastro</i></span>
+            </h2>
+        </div>
+        <form method="post" action="{%SERVER%}/{%MODULE%}/{%ACTION%}/?id={%id-action%}" class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="panel-container show">
+                        <div class="panel-content p-0">
+                            <div class="panel-content">
+
+                                <div class="form-row">
+                                    <div class="col-md-10 mb-3">
+                                        <label class="form-label" for="action">Conteúdo <span class="text-danger">*</span> </label>
+                                        <textarea id="descricao" class="form-control" name="descricao">{%descricao%}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-row" id="gallery">
+                                    <label class="col-md-10 form-label">Adicionar imagens</label>
+                                    <div class="col-md-10">
+                                        <div id="imagem_up" orakuploader="on"></div>
+                                        <span class="flex-1">Recomendado 800 x 600 px</span>
+                                        <!-- %btn-editar-legenda% -->
+                                        <a href="{%SERVER%}/{%MODULE%}/editar-legenda/?id={%id%}" class="btn btn-primary btn-slategray mt-2" type="submit">
+                                            <i class="fal fa-edit"></i>&nbsp;Editar legendas
+                                        </a>
+                                        <!-- %end-btn-editar-legenda% -->
+                                        <div class="panel-tag mt-3">
+                                            <strong>Dica</strong>: Antes de cadastrar as imagens, certifique-se do tratamento do
+                                            <code>peso</code> dos arquivos.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="custom-control custom-checkbox mb-3">
+                                    <input type="checkbox" class="custom-control-input gallery" id="galeria" name="galeria" {%galeria_checked%}>
+                                    <label class="custom-control-label" for="galeria">Exibir galeria de fotos?</label>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch2" name="ativo" {%ativo_checked%}>
+                                        <label class="custom-control-label" for="customSwitch2">Ativo?</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <input type="hidden" id="js-id-cadastro" name="id" value="{%id-action%}" />
+                    <div class="demo text-right">
+                        <a href="{%SERVER%}/{%MODULE%}/{%ACTION%}" type="button" class="btn btn-lg btn-default waves-effect waves-themed">
+                            <span class="fal fa-times mr-1"></span>
+                            Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-lg btn-primary waves-effect waves-themed">
+                            <span class="fal fa-check mr-1"></span>
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+
+<link type="text/css" rel="stylesheet" href="{%SERVER%}/assets/plugins/orakuploader/orakuploader.css" />
+<script type="text/javascript" src="{%SERVER%}/assets/plugins/orakuploader/jquery-ui.min.js"></script>
+<script type="text/javascript" src="{%SERVER%}/assets/plugins/orakuploader/orakuploader.js"></script>
+<script type="text/javascript" src="{%SERVER%}/assets/plugins/orakuploader/scripts.js"></script>
+
+<!-- CKEditor e CKFinder Instances -->
+<script src="{%SERVER%}/assets/plugins/ckeditor/ckeditor.js"></script>
+<script src="{%SERVER%}/assets/plugins/ckfinder/ckfinder.js"></script>
+<script>
+    // descricao
+    CKFinder.setupCKEditor();
+    CKEDITOR.replace('descricao', {
+        width: '100%',
+        height: 350
+    });
+</script>

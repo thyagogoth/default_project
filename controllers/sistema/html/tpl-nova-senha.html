@@ -1,0 +1,163 @@
+<!-- %body% -->
+<!-- <div id="content" class="col-md-12 full-page login">
+	<div class="inside-block">
+		<img src="{%SERVER%}assets/images/logo-big.png" class="logo">
+		<h1><strong>{%saudacao%}</strong> visitante</h1>
+		<h5>Dashboard</h5>
+
+		<form id="form-signin" class="form-signin" method="post" action="{%SERVER%}{%MODULE%}/{%ACTION%}">
+			<input type="hidden" name="system" value="true">
+			<input type="hidden" name="form[token]" value="{%token%}">
+			<p>{%msg-sistema%}</p>
+			<section>
+				<div class="input-group">
+					<input type="password" class="form-control" name="form[senha]" placeholder="Nova senha" required>
+					<div class="input-group-addon"><i class="fa fa-key"></i></div>
+				</div>
+				<div class="input-group">
+					<input type="password" class="form-control" name="form[confirma_senha]" placeholder="Confirmar nova senha" required>
+					<div class="input-group-addon"><i class="fa fa-key"></i></div>
+				</div>
+			</section>
+			<section class="log-in">
+				<button class="btn btn-greensea">alterar senha</button>
+			</section>
+		</form>
+	</div>
+</div> -->
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="shortcut icon" href="{%SERVER%}/assets/img/logo.png">
+    <title>Gerenciador de conteúdo</title>
+    <link rel="stylesheet" type="text/css" href="{%SERVER%}/assets/lib/perfect-scrollbar/css/perfect-scrollbar.min.css" />
+    <link rel="stylesheet" type="text/css" href="{%SERVER%}/assets/lib/material-design-icons/css/materialdesignicons.css" />
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    <link rel="stylesheet" type="text/css" href="{%SERVER%}/assets/lib/jquery.vectormap/jquery-jvectormap-1.2.2.css" />
+    <link rel="stylesheet" type="text/css" href="{%SERVER%}/assets/lib/jqvmap/jqvmap.min.css" />
+    <link rel="stylesheet" type="text/css" href="{%SERVER%}/assets/lib/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="{%SERVER%}/assets/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="{%SERVER%}/assets/css/personalize.css" type="text/css" />
+
+    <script src="{%SERVER%}/assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body class="be-splash-screen">
+	<div class="be-wrapper be-login">
+		<div class="be-content">
+			<div class="main-content container-fluid">
+				<div class="splash-container">
+					<div class="card card-border-color card-border-color-primary">
+						<div class="card-header">
+							<img src="{%SERVER%}/assets/img/logo.png" alt="logo" class="logo-img" width="150" />
+							<span class="splash-description">Por favor, cadastre uma nova senha para o seu acesso.</span>
+						</div>
+						<div class="card-body">
+
+							<div role="alert" class="alert alert-danger alert-icon alert-dismissible {%erro%}">
+								<div class="icon"><span class="mdi mdi-close-circle-outline"></span></div>
+								<div class="message">
+									<button type="button" data-dismiss="alert" aria-label="Close" class="close">
+										<span aria-hidden="true" class="mdi mdi-close"></span>
+									</button>
+									<strong>Oops!! Aconteceu algo inesperado</strong>
+									{%msg-sistema%}
+								</div>
+							</div>
+
+
+							<form action="{%SERVER%}/{%MODULE%}/{%ACTION%}/{%token%}" method="post">
+								<input type="hidden" name="system" value="true">
+								<input type="hidden" name="form[token]" value="{%token%}">
+								<div class="login-form">
+									<div class="form-group">
+										<input id="senha" type="password" name="form[senha]" placeholder="Nova senha" autocomplete="off" class="form-control">
+									</div>
+									<div class="form-group">
+										<input id="confirma_senha" type="password" name="form[confirma_senha]" placeholder="Repita a senha" class="form-control">
+									</div>
+									<div class="form-group row login-submit">
+										<div class="col-12">
+											<button data-dismiss="modal" type="submit" class="btn btn-primary btn-xl">Alterar senha</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script src="{%SERVER%}/assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/js/main.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/jquery-flot/jquery.flot.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/jquery-flot/jquery.flot.pie.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/jquery-flot/jquery.flot.resize.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/jquery-flot/plugins/jquery.flot.orderBars.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/jquery-flot/plugins/curvedLines.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/jquery.sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/countup/countUp.min.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/jqvmap/jquery.vmap.min.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/jquery.nestable/jquery.nestable.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/moment.js/min/moment.min.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/daterangepicker/js/daterangepicker.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/select2/js/select2.min.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/select2/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/lib/bootstrap-slider/js/bootstrap-slider.js" type="text/javascript"></script>
+
+    <script src="{%SERVER%}/assets/js/mask.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/js/mascara.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/js/sistema.js" type="text/javascript"></script>
+    <script src="{%SERVER%}/assets/js/clipboard.js" type="text/javascript"></script>
+
+    <script language="javascript" type="text/javascript" src="{%SERVER%}/assets/js/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+        if ($('.tinymce').size() > 0) {
+            tinymce.init({
+                selector: ".tinymce",
+                theme: "modern",
+                //plugins: "preview, code, media, image, link, contextmenu",
+                plugins: [
+                    'advlist autolink lists link image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table contextmenu paste code'
+                ],
+                imagetools_toolbar: "rotateleft rotateright | flipv fliph | editimage imageoptions",
+                toolbar: "undo redo | bold italic underline clear | bullist numlist | alignleft aligncenter alignright alignjustify | code | media | image | link | removeformat",
+                menubar: "table format view tools insert edit",
+                width: '100%',
+                height: '300px',
+                language: 'pt_BR',
+                statusbar: false
+            });
+        }
+    </script>
+
+    <script src="{%SERVER%}/assets/js/app.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			//initialize the javascript
+			App.init();
+		});
+	</script>
+
+	<div class="be-scroll-top"></div>
+</body>
+
+</html>

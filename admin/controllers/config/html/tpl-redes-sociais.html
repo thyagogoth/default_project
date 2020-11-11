@@ -1,0 +1,93 @@
+<!-- %header% -->
+<script language="javascript" type="text/javascript" src="{%HTTP_MODULE_PATH%}js/cadastrar-rede.js"></script>
+<script>
+    $(function () {
+        jQuery(document).delegate('.js-alt-icone', "change", function () {
+            var _icone = jQuery(this).val();
+            var _pos = jQuery(this).attr('rel');
+            jQuery('#show_icone' + _pos).html('<i class="fa fa-2x ' + _icone + '"></i>');
+        });
+    });
+</script>
+<!-- %body% -->
+<div class="col-md-12">
+    <section class="tile color transparent-black {%erro%}">
+        <div class="tile-header">
+            <h1><strong>Aten&ccedil;&atilde;o</strong> !!!</h1>
+            <div class="controls">
+                <a href="#" class="remove"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <div class="tile-body">{%msg-sistema%}</div>
+    </section>
+
+    <section class="tile color transparent-black">
+        <div class="tile-header">
+            <h1><strong>Cadastro de </strong> Redes sociais</h1>
+            <div class="controls">
+                <a href="{%SERVER%}/{%MODULE%}/{%ACTION%}"><i class="fa fa-refresh"></i></a>
+            </div>
+        </div>
+        <div class="tile-body">
+            <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="{%SERVER%}/{%MODULE%}/{%ACTION%}">
+                <input type="hidden" name="system" value="true" />
+
+                <!-- %loop-item% -->
+                <div class="form-group dev_{%id-rede%}">
+
+                    <label for="item" class="col-sm-2 control-label">Rede social {%i%}</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="item" value="{%item%}" name="red[{%i%}][item]" required>
+                    </div>
+
+                    <label for="link" class="col-sm-1 control-label">Link {%i%}</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control mask-link" id="link" value="{%link%}" name="red[{%i%}][link]" required>
+                    </div>
+
+                    <label for="icone" class="col-sm-1 control-label">&Iacute;cone {%i%}</label>
+                    <div class="col-sm-2">
+                        <select class="chosen-select chosen-transparent form-control js-alt-icone" rel="_{%i%}" id="icone" name="red[{%i%}][icone]" required>
+                            <option value="">-- &Iacute;cone</option>
+                            <!-- %loop-icone% -->
+                            <option value="{%icone%}" {%selected%}>{%nome%}</option>
+                            <!-- %end-loop-icone% -->
+                        </select>
+                    </div>
+                    <div class="col-sm-1 show_icon" id="show_icone_{%i%}">
+                        <i class="fa fa-2x {%icone-escolhido%}" id="js-icone_{%i%}"></i>
+                    </div>
+
+                    <!-- %show-btn% -->
+                    <a href="javascript:void(0);" class="btn btn-red js-excluir" id="excluir_{%id-rede%}">
+                        <i class="fa fa-remove"></i>
+                    </a>
+                    <!-- %end-show-btn% -->
+
+                </div>
+                <!-- %end-itens% -->
+
+                <!-- ADICAO DE REDE SOCIAL -->
+                <div class="form-group">
+                    <div id="redes" class="col-md-12">
+                        <input type="hidden" name="n_redes" value="{%i%}" id="n_redes" class="" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10 text-right">
+                        <button type="button" class="btn btn-primary" id="addRede">
+                            <i class="fa fa-plus"></i>&nbsp;Adicionar rede
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group form-footer">
+                    <div class="col-sm-12 text-center">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>

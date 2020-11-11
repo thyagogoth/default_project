@@ -1,0 +1,72 @@
+<!-- %header% -->
+<!-- %body% -->
+<section class="tile color transparent-black">
+    <div class="tile-header">
+        <h1><strong>&Iacute;cones</strong> cadastrados</h1>
+        <div class="search">
+            <form action="{%SERVER%}/{%MODULE%}/{%ACTION%}" method="get" id="frm_busca">
+                <input name="busca" value="{%busca%}" type="text" placeholder="procurar..." onfocus="if (this.value == this.defaultValue)
+                            this.value = ''" onblur="if (this.value == '')
+                                        this.value = this.defaultValue" onKeyPress="if (event.keyCode === 13 && document.getElementById('inputhead').value !== '')
+                                                    frm_busca.submit();" />
+            </form>
+        </div>
+    </div>
+
+    <section class="tile transparent">
+        <div class="tile-body color">
+            <div class="table-responsive">
+                <table  class="table table-datatable table-custom" id="inlineEditDataTable">
+                    <thead>
+                        <tr>
+                            <th class="sort-alpha" style="width: 57%; max-width: 580px;">Nome</th>
+                            <th class="sort-alpha">C&oacute;digo</th>
+                            <th class="sort-alpha">SVG &iacute;cone</th>
+                            <th class="sort-alpha">Exibir no site?</th>
+                            <th class="no-sort">A&ccedil;&otilde;es</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- %loop% -->
+                        <tr class="odd gradeX">
+                            <td>
+                                <a href="{%SERVER%}/{%MODULE%}/cadastrar-icone/{%id%}">{%nome%}</a>
+                            </td>
+                            <td class="text-left">{%icone%}</td>
+                            <td class="text-center"><i class="fa {%icone%} fa-2x"></i></td>
+                            <td class="text-center">{%ativo%}</td>
+                            <td class="actions text-center">
+                                <a class="edit" href="{%SERVER%}/{%MODULE%}/cadastrar-icone/{%id%}">
+                                    <i class="fa fa-pencil"></i>
+                                    Editar
+                                </a>
+                                <a class="delete" href="{%SERVER%}/{%MODULE%}/{%ACTION%}/{%id%}/{%slug%}" onclick="return confirm('Deseja remover este cadastro?')">
+                                    <i class="fa fa-eraser"></i>
+                                    Deletar
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- %no-loop% -->
+                        <tr class="odd gradeX">
+                            <td colspan="5" align="center">NENHUM CADASTRO DISPON&Iacute;VEL</td>
+                        </tr>
+                        <!-- %end-loop% -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <div class="tile-footer bg-transparent-black-2 rounded-bottom-corners">
+        <div class="row">  
+            <div class="col-sm-8 text-center">
+                <small class="inline table-options paging-info">Exibindo {%exibindo%} registro{%s%} de {%total%} existente{%s%}</small>
+            </div>
+            <div class="col-sm-4 text-right sm-center">
+                <ul class="pagination pagination-xs nomargin pagination-custom">
+                    {%paginacao%}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

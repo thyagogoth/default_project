@@ -1,0 +1,105 @@
+<!-- %header% -->
+<!-- %body% -->
+<main id="js-page-content" role="main" class="page-content">
+    {%breadcrumb%}
+    <div class="subheader">
+        <h1 class="subheader-title">
+            <i class='subheader-icon fal fa-table'></i> Listando: <span class='fw-300'>Mensagens</span>
+            <small>
+                Lista de mensagens recebidas
+            </small>
+        </h1>
+    </div>
+    <!-- %alert-box% -->
+    <div class="alert alert-{%type%}">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fal fa-times-circle"></i></span>
+        </button>
+        <div class="d-flex flex-start w-100">
+            <div class="mr-2 hidden-md-down">
+                <span class="icon-stack icon-stack-lg">
+                    <i class="base base-2 icon-stack-3x opacity-100 color-primary-500"></i>
+                    <i class="base base-2 icon-stack-2x opacity-100 color-primary-300"></i>
+                    <i class="fal fa-info icon-stack-1x opacity-100 color-white"></i>
+                </span>
+            </div>
+            <div class="d-flex flex-fill">
+                <div class="flex-fill">
+                    <span class="h5">{%title%}</span>
+                    {%msg-sistema%}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- %end-alert-box% -->
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Mensagens <span class="fw-300"><i>cadastradas</i></span>
+                    </h2>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <!-- datatable start -->
+                        <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
+                            <thead>
+                                <tr>
+                                    <th data-class-name="priority"><i class="fal fa-eye"></i></th>
+                                    <th>&nbsp;</th>
+                                    <th>Nome</th>
+                                    <th>E-mail</th>
+                                    <th>Departamento</th>
+                                    <th>Data do cadastro</th>
+                                    <th>Opções</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- %loop% -->
+                                <tr>
+                                    <td class="align-middle">
+                                        <i class="ni ni-folder{%lida%}"></i>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <i class="{%fal%} fa-star"></i>
+                                    </td>
+                                    <td class="align-middle">{%b%}{%nome%}{%/b%}</td>
+                                    <td class="align-middle">{%b%}{%email%}{%/b%}</td>
+                                    <td class="align-middle">{%b%}{%assunto%}{%/b%}</td>
+                                    <td class="align-middle">{%b%}{%created_at_formatada%}{%/b%}</td>
+                                    <td>
+                                        <a href="{%SERVER%}/{%MODULE%}/visualizar/?id={%id%}&{%slug%}" type="button"
+                                            class="text-white btn btn-sm btn-primary waves-effect waves-themed">
+                                            <span class="fal fa-eye"></span>
+                                            Ler
+                                        </a>
+                                        <a data-toggle="modal" onclick="implementsConfirm($(this))" data-src="{%SERVER%}/{%MODULE%}/excluir-mensagem/?id={%id%}"
+                                            data-target="#confirm-delete" type="button" class="text-white btn btn-sm btn-danger waves-effect waves-themed">
+                                            <span class="fal fa-times mr-1"></span>
+                                            Deletar
+                                        </a>
+                                    </td>
+                                </tr>
+                                <!-- %end-loop% -->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th data-class-name="priority"><i class="fal fa-eye"></i></th>
+                                    <th>&nbsp;</th>
+                                    <th>Nome</th>
+                                    <th>E-mail</th>
+                                    <th>Departamento</th>
+                                    <th>Data do cadastro</th>
+                                    <th>Opções</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <!-- datatable end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

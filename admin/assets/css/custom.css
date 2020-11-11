@@ -1,0 +1,168 @@
+/*****************************************
+custom text input
+*****************************************/
+.custom-input{
+    display:inline-block;
+    width:100%;
+    height:calc(1.47em + 1rem + 2px);
+    padding:.5rem 1.875rem .5rem .875rem;
+    font-size:.8125rem;
+    font-weight:400;
+    line-height:1.47;
+    color:#495057;
+    vertical-align:middle;
+    background-color:#fff;
+    border:1px solid #e5e5e5;
+    border-radius:4px;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none
+}
+.custom-input:focus{
+    border-color:#886ab5;
+    outline:0;
+    -webkit-box-shadow:0 0 0 .2rem transparent;
+    box-shadow:0 0 0 .2rem transparent
+}
+.custom-input:focus::-ms-value{
+    color:#495057;
+    background-color:#fff
+}
+.custom-input[multiple],.custom-input[size]:not([size="1"]){
+    height:auto;
+    padding-right:.875rem;
+    background-image:none
+}
+.custom-input:disabled{
+    color:#868e96;
+    background-color:#f3f3f3
+}
+.custom-input::-ms-expand{
+    display:none
+}
+.custom-input-sm{
+    height:calc(1.5em + .75rem + 2px);
+    padding-top:.375rem;
+    padding-bottom:.375rem;
+    padding-left:.844rem;
+    font-size:.75rem
+}
+.custom-input-lg{
+    height:calc(1.5em + 1.5rem + 2px);
+    padding-top:.75rem;
+    padding-bottom:.75rem;
+    padding-left:1.5rem;
+    font-size:1rem
+}
+
+/*****************************************
+* file input type
+*****************************************/
+.upload-box .hold {
+    float: left;
+    width: 100%;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 4px;
+}
+.upload-box .hold a {
+    font: 400 14px/36px 'Roboto',sans-serif;
+    color: #666;
+    text-decoration: none;
+}
+.upload-box .btn-file {
+    position: relative;
+    overflow: hidden;
+    float: left;
+    color: #fff;
+}
+.upload-box .btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    opacity: 0;
+    outline: none;
+    background: #fd0707;
+    cursor: inherit;
+    display: block;
+}
+
+img#image-preview {
+    width: 200px;
+    max-width: 100%;
+}
+
+/** #menu **/
+.hidden-item-color {
+    color: #888 !important;
+}
+
+.hidden-item-color::after {
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 300;
+    content: "\f070";
+}
+
+textarea {
+    resize: none;
+}
+
+.hide { display: none !important; }
+
+.nav-function-minify ul li > ul li i {
+    display: none;
+}
+
+.nav-menu li > ul li a > .ni,
+.nav-menu li > ul li a > [class*="fa-"] {
+    margin-left: -0.8rem;
+    color: inherit; /* currentColor | darkgray | bisque;  */
+}
+
+
+
+/**
+Autosmotivos custom
+**/
+a[target] {
+    border: 0 !important;
+}
+.header-icon .profile-image {
+    cursor: pointer;
+}
+
+.search {
+    flex: inherit;
+}
+.nav-function-top .search a {
+    color: #a38cc6;
+}
+.nav-function-top .search a:hover{
+    color: #beaed7;
+}
+.search a:hover {
+    cursor: pointer;
+}
+
+.breadcrumb > li.breadcrumb-item {
+    max-width: 200px;
+}
+
+.header-function-fixed:not(.nav-function-top):not(.nav-function-fixed) .page-sidebar .primary-nav {
+    margin-top: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .menu-management .side-one {
+        order: 1;
+    }
+}
+
+.info-card {
+    height: 6.5rem;
+}

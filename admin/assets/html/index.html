@@ -1,0 +1,218 @@
+<!-- %header% -->
+<!DOCTYPE html>
+<html lang="pt-BR" class="{%HTML_SETTINGS%}">
+    <head>
+        <meta charset="utf-8">
+        <title>Painel de controle</title>
+        <meta name="description" content="Painel de Gerenciamento de Conteúdo">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-tap-highlight" content="no">
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/vendors.bundle.css">
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/app.bundle.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="{%SERVER%}/assets/img/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="{%SERVER%}/assets/img/favicon/favicon-32x32.png">
+        <link rel="mask-icon" href="{%SERVER%}/assets/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/datagrid/datatables/datatables.bundle.css">
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css">
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/notifications/toastr/toastr.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/fa-brands.css">
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/fa-solid.css">
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/fa-regular.css">
+
+        <!-- CSS Custom -->
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/custom.css?2">
+
+        <script src="{%SERVER%}/assets/js/vendors.bundle.js"></script>
+        <script>
+            var site = window.location.origin;
+            var admin = '{%SERVER%}';
+            var module = "{%MODULE%}";
+            var action = "{%ACTION%}";
+        </script>
+        {%header%}
+    </head>
+    <!-- %body% -->
+
+    <body class="desktop pace-done {%BODY_SETTINGS%}">
+        <script>
+            /**
+             *	This script should be placed right after the body tag for fast execution
+             *	Note: the script is written in pure javascript and does not depend on thirdparty library
+             **/
+            'use strict';
+
+            var classHolder = document.getElementsByTagName("BODY")[0],
+                    /**
+                     * Load from localstorage
+                     **/
+                    themeSettings = (localStorage.getItem('themeSettings')) ? JSON.parse(localStorage.getItem('themeSettings')) : {},
+                    themeURL = themeSettings.themeURL || '',
+                    themeOptions = themeSettings.themeOptions || '';
+            /**
+             * Load theme options
+             **/
+            if (themeSettings.themeOptions) {
+                classHolder.className = themeSettings.themeOptions;
+                //      console.log("%c✔ Theme settings loaded", "color: #148f32");
+                // } else {
+                //      console.log("Heads up! Theme settings is empty or does not exist, loading default settings...");
+            }
+            if (themeSettings.themeURL && !document.getElementById('mytheme')) {
+                var cssfile = document.createElement('link');
+                cssfile.id = 'mytheme';
+                cssfile.rel = 'stylesheet';
+                cssfile.href = themeURL;
+                document.getElementsByTagName('head')[0].appendChild(cssfile);
+            }
+            /**
+             * Save to localstorage
+             **/
+            var saveSettings = function () {
+                themeSettings.themeOptions = String(classHolder.className).split(/[^\w-]+/).filter(function (item) {
+                    return /^(nav|header|mod|display)-/i.test(item);
+                }).join(' ');
+                if (document.getElementById('mytheme')) {
+                    themeSettings.themeURL = document.getElementById('mytheme').getAttribute("href");
+                }
+                ;
+                console.log(themeSettings);
+                localStorage.setItem('themeSettings', JSON.stringify(themeSettings));
+            }
+            
+            /**
+             * Reset settings
+             **/
+            var resetSettings = function () {
+                localStorage.setItem("themeSettings", "");
+            }
+        </script>
+        <div class="page-wrapper">
+            <div class="page-inner">
+                {%sidebar-menu%}
+
+                <div class="page-content-wrapper">
+                    {%top-bar%}
+
+                    {%page%}
+
+                    <!-- this overlay is activated only when mobile menu is triggered -->
+                    <div class="page-content-overlay" data-action="toggle" data-class="mobile-nav-on"></div> <!-- END Page Content -->
+
+                    <!-- BEGIN Page Footer -->
+                    <footer class="page-footer" role="contentinfo">
+                        <div class="d-flex align-items-center flex-1 text-muted">
+                            <span class="hidden-md-down fw-700">{%YEAR%} &copy; {%config_nome_site%}</span>
+                        </div>
+                        <div>
+                            <ul class="list-table m-0">
+                                <li class="pl-3"><a href="{%SERVER%}/#" class="text-secondary fw-700">Documentação</a></li>
+                                <li class="pl-3"><a href="{%SERVER%}/#" class="text-secondary fw-700">Fale com o desenvolvedor</a></li>
+                                <!-- <li class="pl-3 fs-xl"><a href="{%SERVER%}/#" class="text-secondary"><i class="fal fa-question-circle" aria-hidden="true"></i></a></li> -->
+                            </ul>
+                        </div>
+                    </footer>
+                    <!-- END Page Footer -->
+
+                </div>
+            </div>
+        </div>
+
+        <!-- BEGIN Quick Menu
+            Botões flutuantes RIGHT FOOTER
+        --
+        <nav class="shortcut-menu hidden-sm-down">
+            <input type="checkbox" class="menu-open" name="menu-open" id="menu_open" />
+            <label for="menu_open" class="menu-open-button ">
+                <span class="app-shortcut-icon d-block"></span>
+            </label>
+            <a href="javascript:void(0);" class="menu-item btn" data-toggle="tooltip" data-placement="left" title="Deslizar para o topo">
+                <i class="fal fa-arrow-up"></i>
+            </a>
+            <a data-toggle="modal" onclick="implementsConfirm($(this))" data-src="{%SERVER%}/desconectar" data-target="#confirm-exit" type="button" class="menu-item btn"
+                title="Desconectar">
+                <i class="ni ni-power"></i>
+            </a>
+            <a href="{%SERVER%}/#" class="menu-item btn" data-action="app-fullscreen" data-toggle="tooltip" data-placement="left" title="Full Screen">
+                <i class="fal fa-expand"></i>
+            </a>
+        </nav>
+        <!-- END Quick Menu -->
+
+        <!-- MODAL CONFIRMAÇÃO DE EXCLUSÃO -->
+        <div class="modal modal-alert fade" id="confirm-delete" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmação</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Deseja realmente excluir este item?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                        <a href="" type="button" class="text-white btn btn-primary">Sim, excluir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL CONFIRMAÇÃO DE LOGOUT -->
+        <div class="modal modal-alert fade" id="confirm-exit" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmação</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Deseja realmente desconectar seu perfil do Painel de Controle?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                        <a href="" type="button" class="text-white btn btn-primary">Sim, desconectar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="{%SERVER%}/assets/js/app.bundle.js"></script>
+        <script src="{%SERVER%}/assets/js/notifications/toastr/toastr.js"></script>
+        <script>
+            $(document).ready(function () {
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": true,
+                    "positionClass": "toast-bottom-right",
+                    "preventDuplicates": true,
+                    "showDuration": 300,
+                    "hideDuration": 100,
+                    "timeOut": 5000,
+                    "extendedTimeOut": 1000,
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+            });
+        </script>
+        <script src="{%SERVER%}/assets/js/statistics/peity/peity.bundle.js"></script>
+        <script src="{%SERVER%}/assets/js/statistics/flot/flot.bundle.js"></script>
+        <script src="{%SERVER%}/assets/js/statistics/easypiechart/easypiechart.bundle.js"></script>
+        <script src="{%SERVER%}/assets/js/datagrid/datatables/datatables.bundle.js"></script>
+        <script src="{%SERVER%}/assets/js/formplugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+        <script src="{%SERVER%}/assets/js/scripts.js"></script>
+    </body>
+
+</html>

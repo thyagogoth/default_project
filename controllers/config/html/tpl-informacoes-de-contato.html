@@ -1,0 +1,107 @@
+<!-- %header% -->
+<script language="javascript" type="text/javascript" src="{%HTTP_MODULE_PATH%}js/cadastrar.js"></script>
+<script language="javascript" type="text/javascript" src="{%SERVER%}/assets/js/mask.js"></script>
+<!-- %body% -->
+<section class="tile color transparent-black {%erro%}">
+    <div class="tile-header">
+        <h1><strong>Atenção</strong> !!!</h1>
+        <div class="controls">
+            <a href="#" class="remove"><i class="fa fa-times"></i></a>
+        </div>
+    </div>
+    <div class="tile-body">{%msg-sistema%}</div>
+</section>
+<section class="tile color transparent-black">
+    <div class="tile-header">
+        <h1><strong>Cadastro de </strong> Informações de contato</h1>
+        <div class="controls">
+            <a href="{%SERVER%}/{%MODULE%}/{%ACTION%}">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="tile-body">
+        <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="{%SERVER%}/{%MODULE%}/{%ACTION%}">
+            <input type="hidden" name="system" value="true" />
+            <input type="hidden" name="form[id]" value="{%id%}" />
+            <div class="form-group">
+                <label for="nome_site" class="col-sm-2 control-label">Nome do site</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="nome_site" value="{%nome_site%}" name="form[nome_site]">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cnpj" class="col-sm-2 control-label">CNPJ</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="cnpj" value="{%cnpj%}" name="form[cnpj]" onkeypress="mascara(this,mcnpj);" maxlength="18" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cep" class="col-sm-2 control-label">CEP</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="cep" value="{%cep%}" name="form[cep]"
+                        onkeypress="mascara(this, mcep);" maxlength="10" />
+                </div>
+                <label class="col-sm-1 ajax-loading"><i class="fa fa-spinner fa-pulse"></i></label>
+            </div>
+            <div class="form-group">
+                <label for="rua" class="col-sm-2 control-label">Endereço</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="rua" value="{%rua%}" name="form[rua]">
+                </div>
+                <label for="numero" class="col-sm-1 control-label">Nº</label>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="numero" value="{%numero%}" name="form[numero]">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="complemento" class="col-sm-2 control-label">Complemento</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="complemento" value="{%complemento%}" name="form[complemento]">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bairro" class="col-sm-2 control-label">Bairro</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="bairro" value="{%bairro%}" name="form[bairro]">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cidade" class="col-sm-2 control-label">Cidade</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="cidade" value="{%cidade%}" name="form[cidade]">
+                </div>
+                <label for="uf" class="col-sm-1 control-label">Estado</label>
+                <div class="col-sm-1">
+                    <select class="chosen-select chosen-transparent form-control" id="uf" name="form[uf]">
+                        <option value=""> -- Estado</option>
+                        <!-- %loop-uf% -->
+                        <option value="{%id%}" {%selected%}>{%id%}</option>
+                        <!-- %end-loop-uf% -->
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="link" class="col-sm-2 control-label">E-mail</label>
+                <div class="col-sm-4">
+                    <input type="email" class="form-control" id="email" value="{%email%}" name="form[email]">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="telefone1" class="col-sm-2 control-label">Telefone</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="telefone" value="{%telefone%}" name="form[telefone]" onkeypress="mascara(this,mtel);" maxlength="15" />
+                </div>
+                <label for="whatsapp" class="col-sm-1 control-label">WhatsApp</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="whatsapp" value="{%whatsapp%}" name="form[whatsapp]" onkeypress="mascara(this,mtel);" maxlength="15" />
+                </div>
+            </div>
+            <div class="form-group form-footer">
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

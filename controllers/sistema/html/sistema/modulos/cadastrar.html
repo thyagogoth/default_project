@@ -1,0 +1,114 @@
+<!-- %header% -->
+<!-- %body% -->
+
+<main id="js-page-content" role="main" class="page-content">
+    {%breadcrumb%}
+
+    <div class="subheader">
+        <h1 class="subheader-title">
+            <i class='subheader-icon fal fa-edit'></i> Cadastrando: <span class='fw-300'>Módulo</span>
+            <small>
+                Cadastro de modulo para gerenciamento do sistema
+            </small>
+        </h1>
+    </div>
+    <!-- %alert-box% -->
+    <div class="alert alert-{%type%} alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fal fa-times"></i></span>
+        </button>
+        <div class="d-flex align-items-center">
+            <div class="alert-icon width-6">
+                <span class="icon-stack icon-stack-lg">
+                    <i class="base-2 icon-stack-3x color-{%type%}-400"></i>
+                    <i class="base-10 text-white icon-stack-1x"></i>
+                    <i class="ni md-profile color-{%type%}-800 icon-stack-2x"></i>
+                </span>
+            </div>
+            <div class="flex-1">
+                <span class="h3">{%title%}</span>
+                <br>
+                {%msg-sistema%}
+            </div>
+        </div>
+    </div>
+    <!-- %end-alert-box% -->
+
+    <div id="panel-2" class="panel">
+        <div class="panel-hdr">
+            <h2>
+                Formulário <span class="fw-300"><i>de cadastro</i></span>
+            </h2>
+        </div>
+        <form method="post" action="{%SERVER%}/{%MODULE%}/{%ACTION%}/?id={%id%}" class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="panel-container show">
+                        <div class="panel-content p-0">
+                            <div class="panel-content">
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label" for="modulo">Nome do modulo <span class="text-danger">*</span> </label>
+                                        <input type="text" class="form-control form-control-lg rounded-0 border-top-0 border-left-0 border-right-0 px-0" id="modulo"
+                                            placeholder="EX: nomedomodulo" name="modulo" value="{%modulo%}" required>
+                                        <div class="invalid-feedback">Informe o diretório do módulo</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label" for="label">Máscara <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control form-control-lg rounded-0 border-top-0 border-left-0 border-right-0 px-0" id="label"
+                                            placeholder="EX: Sistema" name="label" value="{%label%}" required>
+                                        <div class="invalid-feedback">Como o módulo deverá ser exibido?</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch2" name="ativo" {%ativo_checked%}>
+                                        <label class="custom-control-label" for="customSwitch2">Ativo?</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script>
+                                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                                (function () {
+                                    'use strict';
+                                    window.addEventListener('load', function () {
+                                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                        var forms = document.getElementsByClassName('needs-validation');
+                                        // Loop over them and prevent submission
+                                        var validation = Array.prototype.filter.call(forms, function (form) {
+                                            form.addEventListener('submit', function (event) {
+                                                if (form.checkValidity() === false) {
+                                                    event.preventDefault();
+                                                    event.stopPropagation();
+                                                }
+                                                form.classList.add('was-validated');
+                                            }, false);
+                                        });
+                                    }, false);
+                                })();
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <input type="hidden" name="id" value="{%id%}" />
+                    <div class="demo text-right">
+                        <a href="{%SERVER%}/{%MODULE%}/modulos" type="button" class="btn btn-lg btn-default waves-effect waves-themed">
+                            <span class="fal fa-times mr-1"></span>
+                            Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-lg btn-primary waves-effect waves-themed">
+                            <span class="fal fa-check mr-1"></span>
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>

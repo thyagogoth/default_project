@@ -1,0 +1,118 @@
+<!-- %body% -->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Redefinição da senha - Painel de controle
+        </title>
+        <meta name="description" content="Redefinição da senha">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-tap-highlight" content="no">
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/vendors.bundle.css">
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/app.bundle.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="{%SERVER%}/assets/img/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="{%SERVER%}/assets/img/favicon/favicon-32x32.png">
+        <link rel="mask-icon" href="{%SERVER%}/assets/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    </head>
+    <body>
+        <div class="page-wrapper">
+            <div class="page-inner bg-brand-gradient">
+                <div class="page-content-wrapper bg-transparent m-0">
+                    <div class="height-10 w-100 shadow-lg px-4 bg-brand-gradient">
+                        <div class="d-flex align-items-center container p-0">
+                            <div class="page-logo width-mobile-auto m-0 align-items-center justify-content-center p-0 bg-transparent bg-img-none shadow-0 height-9">
+                                <a href="{%SERVER%}/" class="page-logo-link press-scale-down d-flex align-items-center">
+                                    <img src="{%SERVER%}/assets/img/logo.png" alt="Painel de controle" aria-roledescription="logo">
+                                    <span class="page-logo-text mr-1">Painel de controle</span>
+                                </a>
+                            </div>
+                            <span class="text-white opacity-50 ml-auto mr-2 hidden-sm-down">
+                                Você sabe a sua senha?
+                            </span>
+                            <a href="{%SERVER%}/login" class="btn-link text-white ml-auto ml-sm-0">
+                                Faça login
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex-1" style="background: url(img/svg/pattern-1.svg) no-repeat center bottom fixed; background-size: cover;">
+                        <div class="container py-4 py-lg-5 my-lg-5 px-4 px-sm-0">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <h2 class="fs-xxl fw-500 mt-4 text-white text-center">
+                                        Olá {%nome%}!
+                                        <small class="h3 fw-300 mt-3 mb-5 text-white opacity-60 hidden-sm-down">
+                                            Para recuperar o acesso ao sistema, redefina a senha<br/>
+                                            utilizando o formulário abaixo!
+                                        </small>
+                                    </h2>
+                                </div>
+                                <div class="col-xl-4 ml-auto mr-auto">
+                                    <div class="card p-4 rounded-plus bg-faded">
+
+                                        <!-- %alert-box% -->
+                                        <div class="alert alert-{%type%} alert-dismissible fade show" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                                            </button>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-1">
+                                                    <span class="h5 m-0 fw-700">{%title%}!</span><br/>
+                                                    {%msg-sistema%}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- %end-alert-box% -->
+
+                                        <form method="post" id="js-reset" novalidate="" action="{%SERVER%}/{%ACTION%}/{%token%}">
+                                            <input type="hidden" value="{%token%}" name="token">
+                                            <div class="form-group">
+                                                <label class="form-label" for="senha">Nova senha</label>
+                                                <input type="password" id="senha" class="form-control" placeholder="Informe a nova senha" name="senha" value="{%senha%}" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="confirma_senha">Repita a nova senha</label>
+                                                <input type="password" id="confirma_senha" class="form-control" placeholder="Confirme a senha desejada" name="confirma_senha" value="{%confirma_senha%}" required>
+                                            </div>
+                                            <div class="row no-gutters">
+                                                <div class="ml-auto text-right">
+                                                    <button id="js-reset-btn" type="submit" class="btn btn-danger">
+                                                        Alterar a senha
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-block text-center text-white">
+                            {%YEAR%} © Painel de controle
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="{%SERVER%}/assets/js/vendors.bundle.js"></script>
+        <script src="{%SERVER%}/assets/js/app.bundle.js"></script>
+        <script>
+            $("#js-reset-btn").click(function(event)
+            {
+                // Fetch form to apply custom Bootstrap validation
+                var form = $("#js-reset")
+
+                if (form[0].checkValidity() === false) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.addClass('was-validated');
+                // Perform ajax submit here...
+            });
+
+        </script>
+    </body>
+</html>

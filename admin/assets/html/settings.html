@@ -1,0 +1,272 @@
+<!-- %body% -->
+<main id="js-page-content" role="main" class="page-content">
+    {%breadcrumb%}
+    <div class="subheader">
+        <h1 class="subheader-title">
+            Configurações: <span class="fw-300">Opções de Layout</span>
+            <small>
+                Personalize o layout ao seu gosto. Escolha entre as mais de <span class="fw-500 color-info-700">200 combinações</span>
+            </small>
+        </h1>
+    </div>
+    <!-- %alert-box% -->
+    <div class="alert alert-{%type%}">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fal fa-times-circle"></i></span>
+        </button>
+        <div class="d-flex flex-start w-100">
+            <div class="mr-2 hidden-md-down">
+                <span class="icon-stack icon-stack-lg">
+                    <i class="base base-2 icon-stack-3x opacity-100 color-{%type%}-500"></i>
+                    <i class="base base-2 icon-stack-2x opacity-100 color-{%type%}-300"></i>
+                    <i class="fal fa-info icon-stack-1x opacity-100 color-white"></i>
+                </span>
+            </div>
+            <div class="d-flex flex-fill">
+                <div class="flex-fill">
+                    <span class="h5">{%title%}</span>
+                    {%msg-sistema%}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- %end-alert-box% -->
+
+    <div class="row">
+        <div class="col-xl-6">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Cabeçalho <span class="fw-300"><i>fixo</i></span>
+                    </h2>
+<!--                    <div class="panel-toolbar">
+                        <span class="badge badge-primary fw-300 ml-auto">GLOBAL</span>
+                    </div>-->
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <p>
+                            Mantém o cabeçalho em uma posição fixa e visível o tempo todo.
+                        </p>
+                        <a href="settings_layout_options.html#" onclick="return false;" class="btn btn-switch m-0" data-action="toggle" data-class="header-function-fixed"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div id="panel-2" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Navegação <span class="fw-300"><i>fixa</i></span>
+                    </h2>
+<!--                    <div class="panel-toolbar">
+                        <span class="badge badge-primary fw-300 ml-auto">GLOBAL</span>
+                    </div>-->
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <p>
+                            Ativa o plugin de rolagem personalizado, mantendo a posição do painel esquerdo fica fixa.
+                        </p>
+                        <a href="settings_layout_options.html#" onclick="return false;" class="btn btn-switch m-0" data-action="toggle" data-class="nav-function-fixed"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-xl-6">
+            <div id="panel-3" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Navegação <span class="fw-300"><i>mínima</i></span>
+                    </h2>
+<!--                    <div class="panel-toolbar">
+                        <span class="badge badge-warning fw-300 ml-1">DESKTOP</span>
+                        <span class="badge bg-info-800 fw-300 ml-1">TABLETS</span>
+                    </div>-->
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <p>
+                            Oculta os textos do menu, reduzindo espaço. Passe o mouse sobre os ícones para revelá-los.
+                        </p>
+                        <a href="settings_layout_options.html#" onclick="return false;" class="btn btn-switch m-0" data-action="toggle" data-class="nav-function-minify"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-xl-6">
+            <div id="panel-4" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Navegação <span class="fw-300"><i>oculta</i></span>
+                    </h2>
+<!--                    <div class="panel-toolbar">
+                        <span class="badge badge-warning fw-300 ml-1">DESKTOP</span>
+                        <span class="badge bg-info-800 fw-300 ml-1">TABLETS</span>
+                    </div>-->
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <p>A navegação é revelada quando o usuário passa o mouse sobre a parte visível da navegação.</p>
+                        <a href="settings_layout_options.html#" onclick="return false;" class="btn btn-switch m-0" data-action="toggle" data-class="nav-function-hidden"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-xl-6">
+            <div id="panel-5" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Navegação <span class="fw-300"><i>no topo</i></span>
+                    </h2>
+<!--                    <div class="panel-toolbar">
+                        <span class="badge badge-warning fw-300 ml-1">DESKTOP</span>
+                        <span class="badge bg-info-800 fw-300 ml-1">TABLETS</span>
+                    </div>-->
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <p>
+                            O menu é posicionado ao topo, abaixo do cabeçalho.
+                        </p>
+                        <a href="settings_layout_options.html#" onclick="return false;" class="btn btn-switch m-0" data-action="toggle" data-class="nav-function-top"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-xl-6">
+            <div id="panel-11" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Contraste <span class="fw-300"><i>Text (WCAG 2 AA)</i></span>
+                    </h2>
+<!--                    <div class="panel-toolbar">
+                        <span class="badge badge-primary fw-300 ml-1">GLOBAL</span>
+                    </div>-->
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <p>
+                            Taxa de contraste de texto de 4,5: 1 para atender aos padrões WCAG 2 AA.
+                        </p>
+                        <a href="settings_layout_options.html#" onclick="return false;" class="btn btn-switch m-0" data-action="toggle" data-class="mod-high-contrast"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-xl-6">
+            <div id="panel-13" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Preloader <span class="fw-300"><i>Inside</i></span>
+                    </h2>
+<!--                    <div class="panel-toolbar">
+                        <span class="badge badge-primary fw-300 ml-1">GLOBAL</span>
+                    </div>-->
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <p>
+                            Exibe o processamento de carregamento da página.
+                        </p>
+                        <a href="settings_layout_options.html#" onclick="return false;" class="btn btn-switch m-0" data-action="toggle" data-class="mod-pace-custom"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-xl-6">
+            <div id="panel-14" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Background <span class="fw-300"><i>limpo</i></span>
+                    </h2>
+<!--                    <div class="panel-toolbar">
+                        <span class="badge badge-primary fw-300 ml-1">GLOBAL</span>
+                    </div>-->
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <p>
+                            Remove o background padrão do layout.
+                        </p>
+                        <a href="settings_layout_options.html#" onclick="return false;" class="btn btn-switch m-0" data-action="toggle" data-class="mod-clean-page-bg"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-xl-6">
+            <div id="panel-15" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Ícones de navegação <span class="fw-300"><i>ocultos</i></span>
+                    </h2>
+<!--                    <div class="panel-toolbar">
+                        <span class="badge badge-primary fw-300 ml-1">GLOBAL</span>
+                    </div>-->
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <p>
+                            Oculta ícones de navegação para uma aparência elegante e limpa (algumas classes são incompatíveis).
+                        </p>
+                        <a href="settings_layout_options.html#" onclick="return false;" class="btn btn-switch m-0" data-action="toggle" data-class="mod-hide-nav-icons"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-xl-6">
+            <div id="panel-19" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Hierarquia <span class="fw-300"><i>na navegação</i></span>
+                    </h2>
+                    <div class="panel-toolbar">
+                        <span class="badge badge-primary fw-300 ml-1">GLOBAL</span>
+                    </div>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <p>
+                            Alterna a exibição do "caminho" no menu de navegação.
+                        </p>
+                        <a href="settings_layout_options.html#" onclick="return false;" class="btn btn-switch m-0" data-action="toggle" data-class="mod-nav-link"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-12 col-xl-6">
+            <div id="panel-19" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Rodapé <span class="fw-300"><i>fixo</i></span>
+                    </h2>
+                    <div class="panel-toolbar">
+                        <span class="badge badge-primary fw-300 ml-1">GLOBAL</span>
+                    </div>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <p>
+                            Alterna a fixação do rodapé na exibição
+                        </p>
+                        <a href="settings_layout_options.html#" onclick="return false;" class="btn btn-switch m-0" data-action="toggle" data-class="footer-function-fixed"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>

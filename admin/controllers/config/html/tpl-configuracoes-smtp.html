@@ -1,0 +1,56 @@
+<!-- %header% -->
+<script language="javascript" type="text/javascript" src="{%HTTP_MODULE_PATH%}js/cadastrar.js"></script>
+<!-- %body% -->
+<section class="tile color transparent-black {%erro%}">
+    <div class="tile-header">
+        <h1><strong>Atenção</strong> !!!</h1>
+        <div class="controls">
+            <a href="#" class="remove"><i class="fa fa-times"></i></a>
+        </div>
+    </div>
+    <div class="tile-body">{%msg-sistema%}</div>
+</section>
+
+<section class="tile color transparent-black">
+    <div class="tile-header">
+        <h1><strong>Cadastro de </strong> Servidor SMTP</h1>
+        <div class="controls">
+            <a href="{%SERVER%}/{%MODULE%}/{%ACTION%}">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="tile-body">
+        <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="{%SERVER%}/{%MODULE%}/{%ACTION%}">
+            <input type="hidden" name="system" value="true" />
+            <input type="hidden" name="form[id]" value="{%id%}" />
+
+            <div class="form-group">
+                <label for="php_mailer_host" class="col-sm-2 control-label">Host do email:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="php_mailer_host" value="{%php_mailer_host%}" name="form[php_mailer_host]">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="php_mailer_username" class="col-sm-2 control-label">E-mail</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="php_mailer_username" value="{%php_mailer_username%}" name="form[php_mailer_username]">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="php_mailer_password" class="col-sm-2 control-label">Senha</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="php_mailer_password" value="{%php_mailer_password%}" name="form[php_mailer_password]">
+                </div>
+            </div>
+
+            <div class="form-group form-footer">
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

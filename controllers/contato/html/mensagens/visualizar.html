@@ -1,0 +1,289 @@
+<!-- %header% -->
+<!-- %body% -->
+<main id="js-page-content" role="main" class="page-content">
+    <div class="d-flex flex-column flex-grow-1 bg-white">
+        <!-- inbox header -->
+        <div class="flex-grow-0">
+            <!-- inbox button shortcut -->
+            <div class="d-flex flex-wrap align-items-center pl-2 pr-3 py-2 px-sm-4 pr-lg-5 pl-lg-0 border-faded border-top-0 border-left-0 border-right-0">
+                <div class="flex-1 d-flex align-items-center">
+                    <a href="{%SERVER%}/{%MODULE%}/mensagens" title="Voltar para a caixa de entrada" class="btn btn-icon rounded-circle mr-2 mr-lg-3 waves-effect waves-themed">
+                        <i class="fal fa-arrow-left fs-lg"></i>
+                    </a>
+                    <a href="javascript:void(0);" title="Excluir mensagem" data-toggle="modal" onclick="implementsConfirm($(this))"
+                        data-src="{%SERVER%}/{%MODULE%}/excluir-mensagem/?id={%id%}" data-target="#confirm-delete"
+                        class="btn btn-icon rounded-circle mr-1 waves-effect waves-themed">
+                        <i class="fal fa-trash fs-md"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- end inbox button shortcut -->
+        </div>
+        <!-- end inbox header -->
+        <!-- inbox message -->
+        <div class="flex-wrap align-items-center flex-grow-1 position-relative bg-white">
+            <div class=" position-absolute pos-top pos-bottom w-100 custom-scroll">
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+                    <div class="d-flex h-100 flex-column" style="overflow: hidden; width: auto; height: 100%;">
+                        <!-- inbox title -->
+                        <div class="d-flex align-items-center pl-2 pr-3 py-3 pl-sm-3 pr-sm-4 py-sm-4 px-lg-5 py-lg-3 flex-shrink-0">
+                            <!-- button for mobile -->
+                            <a href="javascript:void(0);" class="pl-3 pr-3 py-2 d-flex d-lg-none align-items-center justify-content-center mr-2 btn waves-effect waves-themed"
+                                data-action="toggle" data-class="slide-on-mobile-left-show" data-target="#js-inbox-menu">
+                                <i class="fal fa-ellipsis-v h1 mb-0 "></i>
+                            </a>
+                            <span class="badge badge-primary ml-2 hidden-sm-down">INBOX</span>
+                            <div class="d-flex position-relative ml-auto">
+                                <a id="readed-item" data-code="{%id%}" href="javascript:void(0);" title="Marcar como não lida"
+                                    class="btn btn-icon ml-1 fs-lg waves-effect waves-themed">
+                                    <i class="fal fa-envelope-open"></i>
+                                </a>
+                                <a href="javascript:void(0);" id="important-item" data-code="{%id%}" title="Marcar como importante" class="btn btn-icon ml-1 fs-lg waves-effect waves-themed {%color_important%}">
+                                    <i class="{%fal%} fa-star"></i>
+                                </a>
+                                <a href="javascript:void(0);" title="Alternar conteúdo" class="btn btn-icon ml-1 fs-lg waves-effect waves-themed" data-toggle="collapse"
+                                    data-target=".js-collapse" aria-expanded="true">
+                                    <i class="fal fa-arrows-v"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- end inbox title -->
+                        <!-- message -->
+                        <div id="msg-{%id%}"
+                            class="d-flex flex-column border-faded border-top-0 border-left-0 border-right-0 py-3 px-3 px-sm-4 px-lg-0 mr-0 mr-lg-5 flex-shrink-0">
+                            <div class="d-flex align-items-center flex-row">
+                                <div class="ml-0 mr-3 mx-lg-3">
+                                    <img src="{%SERVER%}/assets/img/demo/avatars/avatar-f.png" class="profile-image profile-image-md rounded-circle" alt="{%nome%}">
+                                </div>
+                                <div class="fw-500 flex-1 d-flex flex-column cursor-pointer" data-toggle="collapse" data-target="#msg-{%id%} > .js-collapse"
+                                    aria-expanded="true">
+                                    <div class="fs-lg">
+                                        {%nome%}
+                                        <span class="fs-nano fw-400 ml-2">&lsaquo;{%email%}&rsaquo;</span>
+                                    </div>
+                                    <div class="fs-nano">
+                                        Departamento: <span>{%nome_assunto%}</span> &lsaquo;{%email_assunto%}&rsaquo;
+                                    </div>
+                                </div>
+                                <div class="color-fusion-200 fs-sm">
+                                    {%horario%} <span class="hidden-sm-down">({%time_ago%})</span>
+                                </div>
+                                <div class="collapsed-reveal">
+                                    <a href="javascript:void(0);" class="btn btn-icon ml-1 fs-lg rounded-circle waves-effect waves-themed" data-action="toggle" data-class="d-flex"
+                                        data-target="#panel-compose" data-focus="message-to">
+                                        <i class="fal fa-reply"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="js-collapse collapse show">
+                                <div class="pl-lg-5 ml-lg-5 pt-3 pb-4">
+                                    {%mensagem%}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end message -->
+
+                        <!-- %respostas% -->
+                        <!-- %loop% -->
+                        <div id="msg-{%id%}"
+                            class="d-flex flex-column border-faded border-top-0 border-left-0 border-right-0 py-3 px-3 px-sm-4 px-lg-0 mr-0 mr-lg-5 flex-shrink-0">
+                            <div class="d-flex align-items-center flex-row">
+                                <div class="ml-0 mr-3 mx-lg-3">
+                                    <img src="{%SERVER%}/assets/img/demo/avatars/avatar-f.png" class="profile-image profile-image-md rounded-circle" alt="Dr. Codex Lantern">
+                                </div>
+                                <div class="fw-500 flex-1 d-flex flex-column cursor-pointer" data-toggle="collapse" data-target="#msg-{%id%} > .js-collapse"
+                                    aria-expanded="true">
+                                    <div class="fs-lg">
+                                        {%nome%}
+                                        <span class="fs-nano fw-400 ml-2">&lsaquo;{%email%}&rsaquo;</span>
+                                    </div>
+                                    <div class="fs-nano">
+                                        Assunto: Re: <span>{%nome_assunto%}</span>
+                                    </div>
+                                </div>
+                                <div class="color-fusion-200 fs-sm">
+                                    {%horario%} <span class="hidden-sm-down">({%time_ago%})</span>
+                                </div>
+                                <div class="collapsed-reveal">
+                                    <a href="javascript:void(0);" title="Excluir mensagem" data-toggle="modal" onclick="implementsConfirm($(this))"
+                                        data-src="{%SERVER%}/{%MODULE%}/excluir-mensagem/?id={%id%}" data-target="#confirm-delete"
+                                        class="btn btn-icon rounded-circle mr-1 waves-effect waves-themed">
+                                        <i class="fal fa-trash fs-md"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="collapse js-collapse show">
+                                <div class="pl-lg-5 ml-lg-5 pt-3 pb-4">
+                                    {%mensagem%}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- %end-loop% -->
+                        <!-- %end-respostas% -->
+
+                    </div>
+                    <div class="slimScrollBar"
+                        style="background: rgba(0, 0, 0, 0.6) none repeat scroll 0% 0%; width: 4px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 4px; height: 249.938px;">
+                    </div>
+                    <div class="slimScrollRail"
+                        style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(250, 250, 250) none repeat scroll 0% 0%; opacity: 0.2; z-index: 90; right: 4px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- MODAL PARA ENVIAR UM EMAIL DE RESPOSTA -->
+<form>
+    <div id="panel-compose"
+        class="panel w-100 position-fixed pos-bottom pos-right mb-0 z-index-cloud mr-lg-4 shadow-3 border-bottom-left-radius-0 border-bottom-right-radius-0 expand-full-height-on-mobile expand-full-width-on-mobile shadow"
+        style="max-width:40rem; height:35rem; display: none;">
+
+        <div class="position-relative h-100 w-100 d-flex flex-column">
+            <!-- desktop view -->
+            <div class="panel-hdr bg-fusion-600 height-4 d-none d-sm-none d-lg-flex">
+                <h4 class="flex-1 fs-lg color-white mb-0 pl-3">
+                    Nova mensagem
+                </h4>
+                <div class="panel-toolbar pr-2">
+                    <a href="javascript:void(0);" class="btn btn-icon btn-icon-light fs-xl mr-1" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10"
+                        data-original-title="Expandir" data-placement="bottom">
+                        <i class="fal fa-expand-alt"></i>
+                    </a>
+                    <a id="btn-close-mail" href="javascript:void(0);" class="btn btn-icon btn-icon-light fs-xl" data-action="toggle" data-class="d-flex"
+                        data-target="#panel-compose" data-toggle="tooltip" data-original-title="Cancelar" data-placement="bottom">
+                        <i class="fal fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- end desktop view -->
+            <!-- mobile view -->
+            <div class="d-flex d-lg-none align-items-center px-3 py-3 bg-faded  border-faded border-top-0 border-left-0 border-right-0 flex-shrink-0">
+                <!-- button for mobile -->
+                <!-- end button for mobile -->
+                <h3 class="subheader-title">
+                    Nova mensagem
+                </h3>
+                <div class="ml-auto">
+                    <button type="button" class="btn btn-outline-danger" data-action="toggle" data-class="d-flex" data-target="#panel-compose">Cancelar</button>
+                </div>
+            </div>
+            <!-- end mobile view -->
+
+            <div id="fake-form" class="panel-container show rounded-0 flex-1 d-flex flex-column">
+                <div class="px-3">
+                    <input id="origin" value="{%id-main%}" type="hidden">
+                    <input id="to" value="{%email%}" data-message-to="message-to" type="email" placeholder="Para:"
+                        class="form-control border-top-0 border-left-0 border-right-0 px-0 rounded-0 fs-md mt-2 pr-5" tabindex="1" required>
+                    <a href="javascript:void(0)" class="position-absolute pos-right pos-top mt-3 mr-4" data-action="toggle" data-class="d-block" data-target="#message-to-cc"
+                        data-focus="message-to-cc" data-toggle="tooltip" data-original-title="Adicionar destinatário" data-placement="bottom">Cc</a>
+                    <input id="message-to-cc" type="email" placeholder="Cc:" class="form-control border-top-0 border-left-0 border-right-0 px-0 rounded-0 fs-md mt-2 d-none"
+                        tabindex="2">
+                    <input id="subject" value="Re: {%nome_assunto%}" type="text" placeholder="Assunto:"
+                        class="form-control border-top-0 border-left-0 border-right-0 px-0 rounded-0 fs-md mt-2" tabindex="3" required>
+                </div>
+                <div class="flex-1" style="overflow-y: auto;">
+                    <textarea id="fake_textarea" class="form-control rounded-0 w-100 h-100 border-0 py-3" required></textarea>
+                </div>
+                <div class="px-3 py-4 d-flex flex-row align-items-center flex-wrap flex-shrink-0">
+                    <button type="button" class="btn btn-dark mr-3" name="send-message">
+                        <i class="fal fa-paper-plane"></i>
+                        Enviar mensagem
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end compose message -->
+</form>
+
+<script>
+    $(function () {
+        /**
+         * Envio de resposta da mensagem
+         */
+        var formSelector = 'div#fake-form'; // type the form element selector..
+        $(formSelector + ' button[type="button"]').click(function (e) {
+            var $formElement = $(formSelector);
+            var error = false;
+            $formElement.find('input[type="text"],input[type="email"]').each(function (index) {
+                if (($(this).val() == '' || $(this).val() == undefined) && $(this).attr('id') !== "message-to-cc") {
+                    error = true;
+                }
+            });
+
+            if (error) {
+                toastr.warning("Atenção! Verifique os campos obrigatórios.");
+            } else {
+                $.ajax({
+                    method: 'post', // verbo http
+                    url: admin + '/' + module + '/ajax-send-response', // url
+                    data: {
+                        origin: $('#origin').val(),
+                        to: $('#to').val(),
+                        cc: $('#cc').val(),
+                        subject: $('#subject').val(),
+                        content: $('#fake_textarea').val()
+                    },
+                    beforeSend: function() {
+                        $(formSelector + ' button[type="button"]').attr('disabled', true);
+                    },
+                }).then(response => {
+                    toastr.success('Mensagem enviada com sucesso');
+                    $('#btn-close-mail').click();
+                }).catch(error => {
+                    console.log(error)
+                })
+            }
+        });
+    });
+
+    /**
+     * Seta Mensagem como NÃO LIDA
+     */
+    let element = $('#readed-item')
+    element.on('click', function () {
+        var code = element.attr('data-code')
+        $.ajax({
+            method: 'post', // verbo http
+            url: admin + '/' + module + '/ajax-set-unread', // url
+            data: {
+                id: code, // Parâmetro 1 enviado
+                lida: 'N' // Parâmetro 2 enviado
+            }
+        }).then(response => {
+            // console.log(response)
+            $('#readed-item').addClass('btn-dark');
+            $('#readed-item i').removeClass('fa-envelope-open').addClass('fa-envelope');
+        }).catch(error => {
+            // console.log(error)
+        })
+    });
+
+    /**
+     * Seta Mensagem como IMPORTANTE
+     */
+     let importante = $('#important-item')
+     importante.on('click', function () {
+        var code = importante.attr('data-code')
+        $.ajax({
+            method: 'post', // verbo http
+            url: admin + '/' + module + '/ajax-toggle-important', // url
+            data: {
+                id: code, // Parâmetro 1 enviado
+            }
+        }).then(response => {
+            if ( response == 'Y' ) {
+                if ( $('#important-item i').hasClass('fal') ) {
+                    $('#important-item i').removeClass('fal').addClass('fas');
+                    $('#important-item').addClass('color-warning-500');
+                }
+            } else {
+                $('#important-item i').removeClass('fas').addClass('fal');
+                    $('#important-item').removeClass('color-warning-500');
+            }
+        }).catch(error => {
+            console.log(error)
+        })
+    });
+</script>

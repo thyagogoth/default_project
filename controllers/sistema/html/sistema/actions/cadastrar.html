@@ -1,0 +1,136 @@
+<!-- %header% -->
+<!-- %body% -->
+
+<main id="js-page-content" role="main" class="page-content">
+    {%breadcrumb%}
+
+    <div class="subheader">
+        <h1 class="subheader-title">
+            <i class='subheader-icon fal fa-edit'></i> Cadastrando: <span class='fw-300'>Ação</span>
+            <small>
+                Cadastro de ação para gerenciamento do sistema
+            </small>
+        </h1>
+    </div>
+    <!-- %alert-box% -->
+    <div class="alert alert-{%type%}">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fal fa-times-circle"></i></span>
+        </button>
+        <div class="d-flex flex-start w-100">
+            <div class="mr-2 hidden-md-down">
+                <span class="icon-stack icon-stack-lg">
+                    <i class="base base-2 icon-stack-3x opacity-100 color-primary-500"></i>
+                    <i class="base base-2 icon-stack-2x opacity-100 color-primary-300"></i>
+                    <i class="fal fa-info icon-stack-1x opacity-100 color-white"></i>
+                </span>
+            </div>
+            <div class="d-flex flex-fill">
+                <div class="flex-fill">
+                    <span class="h5">{%title%}</span>
+                    {%msg-sistema%}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- %end-alert-box% -->
+
+    <div id="panel-2" class="panel">
+        <div class="panel-hdr">
+            <h2>
+                Formulário <span class="fw-300"><i>de cadastro</i></span>
+            </h2>
+        </div>
+        <form method="post" action="{%SERVER%}/{%MODULE%}/{%ACTION%}/?id={%id%}" class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="panel-container show">
+                        <div class="panel-content p-0">
+                            <div class="panel-content">
+
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label" for="validationTooltip05">Módulo responsável <span class="text-danger">*</span></label>
+                                        <select name="modulo" class="custom-select form-control-lg rounded-0 border-top-0 border-left-0 border-right-0 px-0" required="" id="modulo">
+                                            <option value="">Selecione um módulo</option>
+                                            <!-- %loop-modulo% -->
+                                            <option value="{%id%}" {%selected%}>{%label%} ({%modulo%})</option>
+                                            <!-- %end-loop-modulo% -->
+                                        </select>
+                                        <div class="invalid-tooltip">
+                                            É necessário informar um módulo
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label" for="action">Ação <span class="text-danger">*</span> </label>
+                                        <input type="text" class="form-control form-control-lg rounded-0 border-top-0 border-left-0 border-right-0 px-0" id="action"
+                                            placeholder="Ex: /nome-da-acao" name="action" value="{%action%}" required>
+                                        <div class="invalid-feedback">Informe a chamada da ação</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label" for="label">Máscara <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control form-control-lg rounded-0 border-top-0 border-left-0 border-right-0 px-0" id="label"
+                                            placeholder="Ex: Nome da ação" name="label" value="{%label-action%}" required>
+                                        <div class="invalid-feedback">Como a ação deverá ser exibida?</div>
+                                    </div>
+                                </div>
+
+                                <div class="custom-control custom-checkbox mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="defaultChecked" name="restrito" {%restrito_checked%}>
+                                    <label class="custom-control-label" for="defaultChecked">Acesso restrito à permissão?</label>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch2" name="ativo" {%ativo_checked%}>
+                                        <label class="custom-control-label" for="customSwitch2">Ativo?</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script>
+                                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                                (function () {
+                                    'use strict';
+                                    window.addEventListener('load', function () {
+                                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                        var forms = document.getElementsByClassName('needs-validation');
+                                        // Loop over them and prevent submission
+                                        var validation = Array.prototype.filter.call(forms, function (form) {
+                                            form.addEventListener('submit', function (event) {
+                                                if (form.checkValidity() === false) {
+                                                    event.preventDefault();
+                                                    event.stopPropagation();
+                                                }
+                                                form.classList.add('was-validated');
+                                            }, false);
+                                        });
+                                    }, false);
+                                })();
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <input type="hidden" name="id" value="{%id-action%}" />
+                    <div class="demo text-right">
+                        <a href="{%SERVER%}/{%MODULE%}/acoes" type="button" class="btn btn-lg btn-default waves-effect waves-themed">
+                            <span class="fal fa-times mr-1"></span>
+                            Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-lg btn-primary waves-effect waves-themed">
+                            <span class="fal fa-check mr-1"></span>
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>

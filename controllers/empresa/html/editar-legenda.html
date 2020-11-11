@@ -1,0 +1,89 @@
+<!-- %header% -->
+<!-- %body% -->
+<main id="js-page-content" role="main" class="page-content">
+    {%breadcrumb%}
+
+    <div class="subheader">
+        <h1 class="subheader-title">
+            <i class='subheader-icon fal fa-edit'></i> Cadastrando: <span class='fw-300'>Ação</span>
+            <small>
+                Cadastro de ação para gerenciamento do sistema
+            </small>
+        </h1>
+    </div>
+    <!-- %alert-box% -->
+    <div class="alert alert-{%type%}">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fal fa-times-circle"></i></span>
+        </button>
+        <div class="d-flex flex-start w-100">
+            <div class="mr-2 hidden-md-down">
+                <span class="icon-stack icon-stack-lg">
+                    <i class="base base-2 icon-stack-3x opacity-100 color-primary-500"></i>
+                    <i class="base base-2 icon-stack-2x opacity-100 color-primary-300"></i>
+                    <i class="fal fa-info icon-stack-1x opacity-100 color-white"></i>
+                </span>
+            </div>
+            <div class="d-flex flex-fill">
+                <div class="flex-fill">
+                    <span class="h5">{%title%}</span>
+                    {%msg-sistema%}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- %end-alert-box% -->
+
+    <div id="panel-2" class="panel">
+        <div class="panel-hdr">
+            <h2>
+                Formulário <span class="fw-300"><i>de cadastro</i></span>
+            </h2>
+        </div>
+
+        <!-- %galeria% -->
+        <form method="post" action="{%SERVER%}/{%MODULE%}/{%ACTION%}" class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="panel-container show">
+                        <div class="panel-content p-0">
+                            <div class="panel-content">
+                                    <div class="form-row">
+
+                                    <!-- %loop-imagem% -->
+                                    <div class="col-md-3 mb-3">
+                                        <div class="card">
+                                            <img class="img-responsive" for="img_{%id%}" src="{%SERVER%}/miniatura.php?src=../uploads/empresa_{%empresa%}/{%imagem%}&x=240&y=240"
+                                                data-img="{%SERVER%}/image.php?src=../uploads/empresa_{%empresa%}/{%imagem%}&y=600">
+                                            <div class="card-body">
+                                                <input type="text" class="form-control form-control-lg rounded-0 border-top-0 border-left-0 border-right-0 px-0" name="form[legenda][{%id%}]" value="{%legenda%}" placeholder="Insira uma legenda" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- %end-loop-imagem% -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <input type="hidden" id="js-id-cadastro" name="id" value="{%id-action%}" />
+                    <div class="demo text-right">
+                        <a href="{%SERVER%}/{%MODULE%}/cadastrar" type="button" class="btn btn-lg btn-default waves-effect waves-themed">
+                            <span class="fal fa-times mr-1"></span>
+                            Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-lg btn-primary waves-effect waves-themed">
+                            <span class="fal fa-check mr-1"></span>
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- %end-galeria% -->
+    </div>
+</main>

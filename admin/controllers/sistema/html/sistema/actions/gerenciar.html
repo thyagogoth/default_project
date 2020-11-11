@@ -1,0 +1,104 @@
+<!-- %header% -->
+<!-- %body% -->
+<main id="js-page-content" role="main" class="page-content">
+    {%breadcrumb%}
+    <div class="subheader">
+        <h1 class="subheader-title">
+            <i class='subheader-icon fal fa-table'></i> Listando: <span class='fw-300'>Ações</span>
+            <small>
+                Lista de Ações do sistema
+            </small>
+        </h1>
+    </div>
+    <!-- %alert-box% -->
+    <div class="alert alert-{%type%} alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fal fa-times"></i></span>
+        </button>
+        <div class="d-flex align-items-center">
+            <div class="alert-icon width-6">
+                <span class="icon-stack icon-stack-lg">
+                    <i class="base-2 icon-stack-3x color-{%type%}-400"></i>
+                    <i class="base-10 text-white icon-stack-1x"></i>
+                    <i class="ni md-profile color-{%type%}-800 icon-stack-2x"></i>
+                </span>
+            </div>
+            <div class="flex-1">
+                <span class="h3">{%title%}</span>
+                <br>
+                {%msg-sistema%}
+            </div>
+        </div>
+    </div>
+    <!-- %end-alert-box% -->
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Ações <span class="fw-300"><i>cadastradas</i></span>
+                    </h2>
+                    <a href="{%SERVER%}/{%MODULE%}/cadastrar-acao" class="btn btn-outline-secondary btn-sm ml-auto mr-2 flex-shrink-0 waves-effect waves-themed">
+                        <i class="fal fa-plus"></i> Novo item
+                    </a>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <!-- datatable start -->
+                        <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
+                            <thead>
+                                <tr>
+                                    <!-- <th data-class-name="priority"><i class="fal fa-sort-numeric-up"></i></th> -->
+                                    <!-- <th>Código</th> -->
+                                    <th>Label</th>
+                                    <th>Módulo &rsaquo; Ação</th>
+                                    <th>Restrito</th>
+                                    <th>Data do cadastro</th>
+                                    <th>Status</th>
+                                    <th>Opções</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- %loop% -->
+                                <tr>
+                                    <!-- <td class="align-middle">{%ordem%}</td> -->
+                                    <!-- <td class="align-middle">{%id%}</td> -->
+                                    <td class="align-middle">{%label%}</td>
+                                    <td class="align-middle">{%nome_modulo%} &rsaquo; {%action%}</td>
+                                    <td class="align-middle"><span class="badge badge-{%cor-restrito%}">{%restrito%}</span></td>
+                                    <td class="align-middle">{%created_at_formatada%}</td>
+                                    <td class="align-middle"><span class="badge badge-{%cor-ativo%}">{%ativo%}</span></td>
+                                    <td>
+                                        <a href="{%SERVER%}/{%MODULE%}/cadastrar-acao/?id={%id%}&{%slug%}" type="button" class="text-white btn btn-sm btn-primary waves-effect waves-themed">
+                                            <span class="fal fa-pencil mr-1"></span>
+                                            Editar
+                                        </a>
+                                        <a data-toggle="modal" onclick="implementsConfirm($(this))" data-src="{%SERVER%}/{%MODULE%}/excluir-acao/?id={%id%}" data-target="#confirm-delete" type="button" class="text-white btn btn-sm btn-danger waves-effect waves-themed">
+                                            <span class="fal fa-times mr-1"></span>
+                                            Deletar
+                                        </a>
+                                    </td>
+                                </tr>
+                                <!-- %end-loop% -->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <!-- <th data-class-name="priority"><i class="fal fa-sort-numeric-up"></i></th> -->
+                                    <!-- <th>Código</th> -->
+                                    <th>Label</th>
+                                    <th>Módulo &rsaquo; Ação</th>
+                                    <th>Restrito</th>
+                                    <th>Data do cadastro</th>
+                                    <th>Status</th>
+                                    <th>Opções</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <!-- datatable end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

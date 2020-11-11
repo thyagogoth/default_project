@@ -1,0 +1,128 @@
+<!-- %header% -->
+<script language="javascript" type="text/javascript" src="{%SERVER%}/assets/plugins/slugify/jquery.slugify.js"></script>
+<script>
+    $(function () {
+        $('#slug').slugify('#titulo');
+    });
+</script>
+<!-- %body% -->
+
+<main id="js-page-content" role="main" class="page-content">
+    {%breadcrumb%}
+
+    <div class="subheader">
+        <h1 class="subheader-title">
+            <i class='subheader-icon fal fa-edit'></i> Cadastrando: <span class='fw-300'>Revenda</span>
+            <small>
+                Cadastro de revendas
+            </small>
+        </h1>
+    </div>
+    <!-- %alert-box% -->
+    <div class="alert alert-{%type%}">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fal fa-times-circle"></i></span>
+        </button>
+        <div class="d-flex flex-start w-100">
+            <div class="mr-2 hidden-md-down">
+                <span class="icon-stack icon-stack-lg">
+                    <i class="base base-2 icon-stack-3x opacity-100 color-{%type%}-500"></i>
+                    <i class="base base-2 icon-stack-2x opacity-100 color-{%type%}-300"></i>
+                    <i class="fal fa-info icon-stack-1x opacity-100 color-white"></i>
+                </span>
+            </div>
+            <div class="d-flex flex-fill">
+                <div class="flex-fill">
+                    <span class="h5">{%title%}</span>
+                    {%msg-sistema%}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- %end-alert-box% -->
+
+    <div id="panel-2" class="panel">
+        <div class="panel-hdr">
+            <h2>
+                Formulário <span class="fw-300"><i>de cadastro</i></span>
+            </h2>
+        </div>
+        <form class="needs-validation" method="post" novalidate>
+            <input type="hidden" id="js-id-cadastro" name="id" value="{%id%}" />
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="panel-container show">
+                        <div class="panel-content p-0">
+                            <div class="panel-content">
+
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label" for="nome">Titulo <span class="text-danger">*</span> </label>
+                                        <input type="text" class="form-control form-control-lg rounded-0 border-top-0 border-left-0 border-right-0 px-0" id="titulo"
+                                            placeholder="Titulo" name="nome" value="{%nome%}" required>
+                                        <div class="invalid-feedback">Informe o Nome da revenda</div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label" for="slug">Slug <span class="text-danger">*</span></label>
+                                        <input type="slug" class="form-control form-control-lg rounded-0 border-top-0 border-left-0 border-right-0 px-0" id="slug"
+                                            placeholder="Slug" name="slug" value="{%slug%}" required>
+                                        <div class="valid-feedback">SLUG da revenda</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="ativo" name="ativo" {%ativo_checked%}>
+                                            <label class="custom-control-label" for="ativo">Ativo?</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- VALIDAÇÃO DO FORM -->
+                            <script>
+                                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                                (function () {
+                                    'use strict';
+                                    window.addEventListener('load', function () {
+                                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                        var forms = document.getElementsByClassName('needs-validation');
+                                        // Loop over them and prevent submission
+                                        var validation = Array.prototype.filter.call(forms, function (form) {
+                                            form.addEventListener('submit', function (event) {
+                                                if (form.checkValidity() === false) {
+                                                    event.preventDefault();
+                                                    event.stopPropagation();
+                                                }
+                                                form.classList.add('was-validated');
+                                            }, false);
+                                        });
+                                    }, false);
+                                })();
+                            </script>
+                            <!-- // END VALIDAÇÃO DO FORM -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="demo text-right">
+                        <a href="{%SERVER%}/{%MODULE%}/revendas" type="button" class="btn btn-lg btn-default waves-effect waves-themed">
+                            <span class="fal fa-times mr-1"></span>
+                            Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-lg btn-primary waves-effect waves-themed">
+                            <span class="fal fa-check mr-1"></span>
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>

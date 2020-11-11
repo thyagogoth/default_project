@@ -1,0 +1,124 @@
+<!-- %header% -->
+<!-- %body% -->
+<main id="js-page-content" role="main" class="page-content">
+    {%breadcrumb%}
+    <div class="subheader">
+        <h1 class="subheader-title">
+            <i class='subheader-icon fal fa-table'></i> Listando: <span class='fw-300'>Regiões</span>
+            <small>
+                Lista de Regiões cadastradas
+            </small>
+        </h1>
+    </div>
+    <!-- %alert-box% -->
+    <div class="alert alert-{%type%}">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fal fa-times-circle"></i></span>
+        </button>
+        <div class="d-flex flex-start w-100">
+            <div class="mr-2 hidden-md-down">
+                <span class="icon-stack icon-stack-lg">
+                    <i class="base base-2 icon-stack-3x opacity-100 color-primary-500"></i>
+                    <i class="base base-2 icon-stack-2x opacity-100 color-primary-300"></i>
+                    <i class="fal fa-info icon-stack-1x opacity-100 color-white"></i>
+                </span>
+            </div>
+            <div class="d-flex flex-fill">
+                <div class="flex-fill">
+                    <span class="h5">{%title%}</span>
+                    {%msg-sistema%}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- %end-alert-box% -->
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2>
+                        Regiões <span class="fw-300"><i>cadastradas</i></span>
+                    </h2>
+                    <a href="{%SERVER%}/{%MODULE%}/cadastrar" class="btn btn-outline-secondary btn-sm ml-auto mr-2 flex-shrink-0 waves-effect waves-themed">
+                        <i class="fal fa-plus"></i> Novo item
+                    </a>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <!-- datatable start -->
+                        <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
+                            <thead>
+                                <tr>
+                                    <th><i class="fal fa-sort-numeric-up"></i></th>
+                                    <th data-class-name="priority">Região</th>
+                                    <th>Slug</th>
+                                    <th>Estado</th>
+                                    <th>DDD</th>
+                                    <th>Ativo</th>
+                                    <th>Data de cadastro</th>
+                                    <th>Opções</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- %loop% -->
+                                <tr>
+                                    <td class="align-middle">{%id%}</td>
+                                    <td class="align-middle">{%regiao%}</td>
+                                    <td class="align-middle">{%slug%}</td>
+                                    <td class="align-middle text-center">{%estado%}</td>
+                                    <td class="align-middle text-center">{%ddd%}</td>
+                                    <td class="align-middle"><span class="badge badge-{%cor-ativo%}">{%ativo%}</span></td>
+                                    <td class="align-middle text-center">{%created_at_formatada%}</td>
+                                    <td>
+                                        <a href="{%SERVER%}/{%MODULE%}/cadastrar/?id={%id%}&{%slug%}" type="button"
+                                            class="text-white btn btn-sm btn-primary waves-effect waves-themed">
+                                            <span class="fal fa-pencil mr-1"></span>
+                                            Editar
+                                        </a>
+                                        <a data-toggle="modal" onclick="implementsConfirm($(this))" data-src="{%SERVER%}/{%MODULE%}/excluir/?id={%id%}"
+                                            data-target="#confirm-delete" type="button" class="text-white btn btn-sm btn-danger waves-effect waves-themed">
+                                            <span class="fal fa-times mr-1"></span>
+                                            Deletar
+                                        </a>
+                                    </td>
+                                </tr>
+                                <!-- %end-loop% -->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th><i class="fal fa-sort-numeric-up"></i></th>
+                                    <th data-class-name="priority">Região</th>
+                                    <th>Slug</th>
+                                    <th>Estado</th>
+                                    <th>DDD</th>
+                                    <th>Ativo</th>
+                                    <th>Data de cadastro</th>
+                                    <th>Opções</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <!-- datatable end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    $(function () {
+        $('.toggle-best').on('click', function () {
+            var code = $(this).attr('data-plano');
+            $.ajax({
+                url: admin + '/' + module + '/ajax-toggle-best/?id=' + code,
+                success: function() {
+                    $('.toggle-best').each( function() {
+                        $(this).removeClass('fas color-warning-500').addClass("fal");
+                    });
+                    $('.code-'+code).removeClass('fal').addClass("fas color-warning-500");
+                }
+            });
+        })
+    });
+</script>

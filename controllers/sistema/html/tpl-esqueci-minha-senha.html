@@ -1,0 +1,73 @@
+<!-- %body% -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{%SERVER%}/assets/img/logo-fav.png">
+    <title>Beagle</title>
+    <link rel="stylesheet" type="text/css" href="{%SERVER%}/assets/lib/perfect-scrollbar/css/perfect-scrollbar.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{%SERVER%}/assets/lib/material-design-icons/css/material-design-iconic-font.min.css"/>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="{%SERVER%}/assets/css/style.css" type="text/css"/>
+</head>
+<body class="be-splash-screen">
+<div class="be-wrapper be-login">
+    <div class="be-content">
+        <div class="main-content container-fluid">
+            <div class="splash-container forgot-password">
+                <div class="panel panel-default panel-border-color panel-border-color-primary">
+                    <div class="panel-heading">
+                        <img src="{%SERVER%}/assets/img/logo.png" alt="logo" width="152" class="logo-img">
+                        <span class="splash-description">Esqueceu sua senha?
+                    </span>
+                    </div>
+                    <div class="panel-body">
+                        <form action="{%SERVER%}/{%MODULE%}/{%ACTION%}" method="post">
+                            <div role="alert" class="alert alert-warning alert-icon alert-icon-border alert-dismissible {%erro%}">
+                                <div class="icon"><span class="mdi mdi-alert-triangle"></span></div>
+                                <div class="message">
+                                    <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+                                        <span aria-hidden="true" class="mdi mdi-close"></span>
+                                    </button>
+                                    <strong>Atenção!</strong> {%msg-sistema%}
+                                </div>
+                            </div>
+                            <input type="hidden" name="post" value="{%SESSION_ID%}"/>
+                            <input type="hidden" name="isHuman" value=""/>
+                            <p>Não se preocupe!<br/> Você receberá um e-mail de recuperação de senha</p>
+                            <div class="form-group xs-pt-20">
+                                <input type="email" name="form[email]" required="" placeholder="Seu e-mail" autocomplete="off" class="form-control">
+                            </div>
+                            <!--<p class="xs-pt-5 xs-pb-20">Não lembra seu e-mail? <a href="pages-forgot-password.html#">Fale com o suporte</a></p>-->
+                            <div class="form-group xs-pt-5">
+                                <button type="submit" class="btn btn-block btn-primary btn-xl">Resetar senha</button>
+                            </div>
+                            <p class="xs-pt-5 xs-pb-05 text-right">Lembrou sua senha? <a href="{%SERVER%}/{%MODULE%}/login">Faça login</a></p>
+                        </form>
+                    </div>
+                </div>
+                <div class="splash-footer">&copy; {%YEAR%} - Dashboard</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{%SERVER%}/assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
+<script src="{%SERVER%}/assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+<script src="{%SERVER%}/assets/js/main.js" type="text/javascript"></script>
+<script src="{%SERVER%}/assets/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //initialize the javascript
+        App.init();
+
+    });
+</script>
+</body>
+</html>

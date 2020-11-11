@@ -1,0 +1,218 @@
+<!-- %header% -->
+<link rel="stylesheet" href="{%SERVER%}/assets/js/nestable/css/style.css">
+<style>
+    .agrupa-botoes {
+        position: absolute;
+        right: -58px;
+        top: 2px;
+    }
+</style>
+<!-- %body% -->
+<main id="js-page-content" role="main" class="page-content">
+    {%breadcrumb%}
+
+    <div class="subheader">
+        <h1 class="subheader-title">
+            <i class='subheader-icon fal fa-edit'></i> Cadastrando: <span class='fw-300'>Menu</span>
+            <small>
+                Cadastro de itens para geração do menu
+            </small>
+        </h1>
+    </div>
+
+    <!-- %alert-box% -->
+    <div class="alert alert-{%type%}">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"><i class="fal fa-times-circle"></i></span>
+        </button>
+        <div class="d-flex flex-start w-100">
+            <div class="mr-2 hidden-md-down">
+                <span class="icon-stack icon-stack-lg">
+                    <i class="base base-2 icon-stack-3x opacity-100 color-{%type%}-500"></i>
+                    <i class="base base-2 icon-stack-2x opacity-100 color-{%type%}-300"></i>
+                    <i class="fal fa-info icon-stack-1x opacity-100 color-white"></i>
+                </span>
+            </div>
+            <div class="d-flex flex-fill">
+                <div class="flex-fill">
+                    <span class="h5">{%title%}</span>
+                    {%msg-sistema%}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- %end-alert-box% -->
+
+    <div id="panel-2" class="panel">
+        <div class="panel-hdr">
+            <h2>
+                Disposição do menu <span class="fw-300"><i>para o usuário</i></span>
+            </h2>
+        </div>
+
+        <div class="row p-g menu-management">
+            
+            <div class="col-xl-2 side-one">
+                <div class="text-left pb-2" id="nestable_list_menu">
+
+                    <button type="button" class="btn btn-secondary btn-lg btn-block flex-shrink-0 waves-effect waves-themed text-left" data-action="expand-all">
+                        <i class="ni ni-size-fullscreen"></i> Expandir
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block flex-shrink-0 waves-effect waves-themed text-left" data-action="collapse-all">
+                        <i class="ni ni-size-actual"></i> Minimizar
+                    </button>
+                    <!-- %show-botao-ocultar-itens% -->
+                    <button type="button" class="btn btn-secondary btn-lg btn-block flex-shrink-0 waves-effect waves-themed text-left"
+                    onclick="window.location.href='{%SERVER%}/{%MODULE%}/{%ACTION%}{%get-btn-exibir%}'">
+                        <i class="fal fa-eye"></i> {%label-btn-exibir%}
+                    </button>
+                    <!-- %end-show-botao-ocultar-itens% -->
+                    <button type="button" class="btn btn-primary btn-lg btn-block flex-shrink-0 waves-effect waves-themed text-left" data-toggle="modal" data-target="#new-action-menu">
+                        <i class="fal fa-plus-square"></i> Novo item
+                    </button>
+                    <button 
+                        id="submit-menu"
+                        type="button" class="btn btn-lg btn-block btn-primary waves-effect waves-themed text-left">
+                        <i class="fal fa-save"></i> Salvar menu
+                    </button>
+
+
+                </div>
+                <textarea style="display: none;" id="nestable-output" class="form-control"></textarea>
+            </div>
+            
+            <div class="col-xl-10">
+                <div class="panel-container show">
+                    <div class="panel-content p-0">
+                        <div class="panel-content p-0">
+                            <div class="form-row">
+                                <div class="dd" id="nestable">{%list%}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</main>
+<!--%end%-->
+
+<!-- MODAL PARA CRIAÇÃO DO ITEM DE MENU -->
+<div class="modal fade" id="new-action-menu" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Cadastro de itens do menu
+                    <small class="m-0 text-muted">Preencha o formulário abaixo</small>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                </button>
+            </div>
+            <form method="post" action="{%SERVER%}/{%MODULE%}/{%ACTION%}{%get-continue%}">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label class="form-label" for="item">Item <span class="text-danger">*</span> </label>
+                            <input type="text" class="custom-input form-control form-control-lg rounded-0 border-top-0 border-left-0 border-right-0 px-0" id="item"
+                                placeholder="Item" name="item" value="{%item%}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="acao">Ação executada <span class="text-danger">*</span></label>
+                            <select name="acao" class="select-with-search custom-select form-control-lg rounded-0 border-top-0 border-left-0 border-right-0 px-0" id="acao">
+                                <option value="" disabled>Selecione uma ação</option>
+                                <option value=""> Nenhuma ação </option>
+                                <!-- %loop-acao-cadastro% -->
+                                <option value="{%id%}" {%selected%}>{%nome_modulo%} &rsaquo; {%action%} &nbsp;&nbsp;({%label%})</option>
+                                <!-- %end-loop-acao-cadastro% -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mt-3">
+                            <label class="form-label" for="icone">Ícone <span class="text-danger">*</span> </label>
+                            <input type="text" class="custom-input form-control form-control-lg rounded-0 border-top-0 border-left-0 border-right-0 px-0" id="icone"
+                                placeholder="Ícone de ilustração" name="icone" value="{%icone%}">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mt-3">
+                            <div class="custom-control custom-checkbox mb-3">
+                                <input type="checkbox" class="custom-control-input" id="oculto" name="oculto">
+                                <label class="custom-control-label" for="oculto">Oculto</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- // END MODAL PARA CRIAÇÃO DO ITEM DE MENU -->
+
+<!-- MODAL PARA EDIÇÃO DE UM ITEM DE MENU -->
+<div class="modal fade" id="edit-action-menu" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Cadastro de itens do menu
+                    <small class="m-0 text-muted">Preencha o formulário abaixo</small>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                </button>
+            </div>
+            <form method="post" action="{%SERVER%}/{%MODULE%}/{%ACTION%}{%get-continue%}">
+                <input type="hidden" name="id" id="edit-code" value="{%id-edit%}" />
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label class="form-label" for="item">Item <span class="text-danger">*</span> </label>
+                            <input type="text" class="custom-input form-control form-control-lg rounded-0 border-top-0 border-left-0 border-right-0 px-0" id="edit-item"
+                                placeholder="Item" name="item" value="{%item%}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="acao">Ação executada <span class="text-danger">*</span></label>
+                            <select name="acao" class="select-with-search custom-select form-control-lg rounded-0 border-top-0 border-left-0 border-right-0 px-0" id="edit-action">
+                                <option value="">Selecione uma ação</option>
+                                <!-- %loop-acao-edicao% -->
+                                <option value="{%id%}" {%selected%}>{%label%} ({%nome_modulo%} &rsaquo; {%action%})</option>
+                                <!-- %end-loop-acao-edicao% -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mt-3">
+                            <label class="form-label" for="icone">Ícone <span class="text-danger">*</span> </label>
+                            <input type="text" class="custom-input form-control form-control-lg rounded-0 border-top-0 border-left-0 border-right-0 px-0" id="edit-icone"
+                                placeholder="Ícone de ilustração" name="icone" value="{%icone%}">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mt-3">
+                            <div class="custom-control custom-checkbox mb-3">
+                                <input type="checkbox" class="custom-control-input" id="edit-oculto" name="oculto">
+                                <label class="custom-control-label" for="edit-oculto">Oculto</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- // END MODAL PARA EDIÇÃO DE UM ITEM DE MENU -->
+
+<script src="{%SERVER%}/assets/js/nestable/jquery.nestable.js"></script>
+<script src="{%SERVER%}/assets/js/editar-menu.js"></script>

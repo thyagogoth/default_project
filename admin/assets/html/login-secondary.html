@@ -1,0 +1,92 @@
+<!-- %body% -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Login - Painel de controle</title>
+        <meta name="description" content="Login">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-tap-highlight" content="no">
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/vendors.bundle.css">
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/app.bundle.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="{%SERVER%}/assets/img/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="{%SERVER%}/assets/img/favicon/favicon-32x32.png">
+        <link rel="mask-icon" href="{%SERVER%}/assets/img/favicon/safari-pinned-tab.svg" color="#4d4d7f">
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/page-login.css">
+        <script>
+            var site = window.location.origin;
+            var admin = '{%SERVER%}';
+            var module = "{%MODULE%}";
+            var action = "{%ACTION%}";
+        </script>
+    </head>
+
+    <body>
+        <div class="blankpage-form-field">
+            <div class="page-logo m-0 w-100 align-items-center justify-content-center rounded border-bottom-left-radius-0 border-bottom-right-radius-0 px-4">
+                <img src="{%SERVER%}/assets/img/logo.png" alt="Painel de controle" aria-roledescription="logo">
+                <span class="page-logo-text mr-1">Painel de controle</span>
+            </div>
+            <div class="card p-4 border-top-left-radius-0 border-top-right-radius-0">
+                <!-- %alert-box% -->
+                <div class="alert alert-{%type%} alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                    </button>
+                    <strong>Oops!</strong>
+                    {%msg-sistema%}
+                </div>
+                <!-- %end-alert-box% -->
+
+                <form method="post" action="{%SERVER%}/{%ACTION%}{%redir-link%}">
+                    <div class="form-group">
+                        <label class="form-label" for="username">E-mail</label>
+                        <input name="login" type="email" id="username" class="form-control" placeholder="Endereço de e-mail" value="{%login%}">
+                        <span class="help-block">Endereço de e-mail para acesso</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password">Senha</label>
+                        <input name="senha" type="password" id="password" class="form-control" placeholder="Senha" value="">
+                        <span class="help-block">Sua senha de acesso</span>
+                    </div>
+                    <div class="form-group text-left">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" value="Sim" id="remember" name="conectado" checked>
+                            <label class="custom-control-label" for="remember">Manter conectado</label>
+                        </div>
+                    </div>
+                    <input type="hidden" name="post" value="{%SESSION_ID%}" />
+                    <button type="submit" class="btn btn-default float-right">
+                        Entrar <i class="fal fa-sign-in-alt"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="blankpage-footer ">
+                <a href="{%SERVER%}/recuperar-a-senha"><strong>Recuperar a senha</strong></a>
+            </div>
+        </div>
+        <!-- %logout-box% -->
+        <div class="login-footer">
+            <div class="col col-sm-12 text-center">
+                <div class="alert alert-{%type%} alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <strong>{%title%}</strong> {%mensagem%}
+                </div>
+            </div>
+        </div>
+        <!-- %end-logout-box% -->
+        <video poster="{%SERVER%}/assets/img/backgrounds/clouds.png" id="bgvid" playsinline autoplay muted loop>
+            <source src="{%SERVER%}/assets/media/video/cc.webm" type="video/webm">
+            <source src="{%SERVER%}/assets/media/video/cc.mp4" type="video/mp4">
+        </video>
+        <script src="{%SERVER%}/assets/js/vendors.bundle.js"></script>
+        <script src="{%SERVER%}/assets/js/app.bundle.js"></script>
+        <!-- Page related scripts -->
+    </body>
+
+</html>

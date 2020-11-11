@@ -1,0 +1,161 @@
+<!-- %body% -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Login - Painel de controle</title>
+        <meta name="description" content="Login">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-tap-highlight" content="no">
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/vendors.bundle.css">
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/app.bundle.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="{%SERVER%}/assets/img/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="{%SERVER%}/assets/img/favicon/favicon-32x32.png">
+        <link rel="mask-icon" href="{%SERVER%}/assets/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="stylesheet" media="screen, print" href="{%SERVER%}/assets/css/fa-brands.css">
+    </head>
+    <body>
+        <div class="page-wrapper">
+
+            <div class="page-inner bg-brand-gradient">
+                <div class="page-content-wrapper bg-transparent m-0">
+                    <div class="height-10 w-100 shadow-lg px-4 bg-brand-gradient">
+                        <div class="d-flex align-items-center container p-0">
+                            <div class="page-logo width-mobile-auto m-0 align-items-center justify-content-center p-0 bg-transparent bg-img-none shadow-0 height-9">
+                                <a href="javascript:void(0)" class="page-logo-link press-scale-down d-flex align-items-center">
+                                    <img src="{%SERVER%}/assets/img/logo.png" alt="SmartAdmin WebApp" aria-roledescription="logo">
+                                    <span class="page-logo-text mr-1">Painel de controle</span>
+                                </a>
+                            </div>
+                            <a href="{%SERVER%}/recuperar-a-senha" class="btn-link text-white ml-auto">
+                                <strong>Não lembra a sua senha?</strong>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex-1" style="background: url(img/svg/pattern-1.svg) no-repeat center bottom fixed; background-size: cover;">
+                        <div class="container py-4 py-lg-5 my-lg-5 px-4 px-sm-0">
+                            <div class="row">
+                                <div class="col col-md-6 col-lg-7 hidden-sm-down">
+                                    <h2 class="fs-xxl fw-500 mt-4 text-white">
+                                        Sistema de gerenciamento de conteúdo
+                                        <small class="h3 fw-300 mt-5 mb-5 text-white opacity-60">
+                                            <!--Presenting you with the next level of innovative UX design and engineering. The most modular toolkit available with over 600+ layout permutations. Experience the simplicity of SmartAdmin, everywhere you go!-->
+                                            Acesse o painel de controle com o e-mail e senha cadastrados no painel de controle. Este sistema lhe permite gerenciar todo o conteúdo do site, além das funcionalidades do Sistema de gerenciamento...<br/>
+                                            Usuários, pemissões, perfis de uso e muito mais.
+                                        </small>
+                                    </h2>
+<!--                                    <div class="d-sm-flex flex-column align-items-center justify-content-center d-md-block">
+                                        <div class="px-0 py-1 mt-5 text-white fs-nano opacity-50">
+                                            Encontre-nos nas redes sociais
+                                        </div>
+                                        <div class="d-flex flex-row opacity-70">
+                                            <a href="page_login-alt.html#" class="mr-2 fs-xxl text-white">
+                                                <i class="fab fa-facebook-square"></i>
+                                            </a>
+                                            <a href="page_login-alt.html#" class="mr-2 fs-xxl text-white">
+                                                <i class="fab fa-twitter-square"></i>
+                                            </a>
+                                            <a href="page_login-alt.html#" class="mr-2 fs-xxl text-white">
+                                                <i class="fab fa-google-plus-square"></i>
+                                            </a>
+                                            <a href="page_login-alt.html#" class="mr-2 fs-xxl text-white">
+                                                <i class="fab fa-linkedin"></i>
+                                            </a>
+                                        </div>
+                                    </div>-->
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-5 col-xl-4 ml-auto">
+                                    <h1 class="text-white fw-300 mb-3 d-sm-block d-md-none">
+                                        Acesso restrito
+                                    </h1>
+
+                                    <div class="card p-4 rounded-plus bg-faded">
+                                        <!-- %alert-box% -->
+                                        <div class="alert alert-{%type%} alert-dismissible fade show" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                                            </button>
+                                            <strong>Oops!</strong>
+                                            {%msg-sistema%}
+                                        </div>
+                                        <!-- %end-alert-box% -->
+
+                                        <form id="js-login" novalidate="" method="post" action="{%SERVER%}/{%ACTION%}{%redir-link%}">
+                                            <div class="form-group">
+                                                <label class="form-label" for="username">E-mail</label>
+                                                <input name="login" type="email" id="username" class="form-control form-control-lg" placeholder="" value="{%login%}" required>
+                                                <div class="invalid-feedback">Ei, você não informou o e-mail.</div>
+                                                <div class="help-block">Seu e-mail de acesso</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="password">Senha</label>
+                                                <input name="senha" type="password" id="password" class="form-control form-control-lg" placeholder="" value="" required>
+                                                <div class="invalid-feedback">Ops, faltou informar a senha.</div>
+                                                <div class="help-block">Senha de acesso</div>
+                                            </div>
+                                            <div class="form-group text-left">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" value="Sim" id="remember" name="conectado" checked>
+                                                    <label class="custom-control-label" for="remember"> Manter conectado</label>
+                                                </div>
+                                            </div>
+                                            <div class="row no-gutters">
+                                                <div class="col-lg-12 pl-lg-1 my-2">
+                                                    <input type="hidden" name="post" value="{%SESSION_ID%}" />
+                                                    <button id="js-login-btn" type="submit" class="btn btn-danger btn-block btn-lg">
+                                                        Entrar <i class="fal fa-sign-in-alt"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                                <!-- %logout-box% -->
+                                <div class="login-footer">
+                                    <div class="col col-sm-12 text-center">
+                                        <div class="alert alert-{%type%} alert-dismissible fade show" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <strong>{%title%}</strong> {%mensagem%}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- %end-logout-box% -->
+                            </div>
+                            <div class="position-absolute pos-bottom pos-left pos-right p-3 text-center text-white">
+                                {%YEAR%} | Painel de controle
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="{%SERVER%}/assets/js/vendors.bundle.js"></script>
+        <script src="{%SERVER%}/assets/js/app.bundle.js"></script>
+        <script>
+            let goSubmit = true;
+            $("#js-login-btn").click(function (event) {
+                // Fetch form to apply custom Bootstrap validation
+                var form = $("#js-login")
+
+                if (form[0].checkValidity() === false)
+                {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    goSubmit = false;
+                }
+                form.addClass('was-validated');
+
+                if (goSubmit === true) {
+                    form[0].submit()
+                }
+            });
+
+        </script>
+    </body>
+</html>
